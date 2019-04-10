@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--Created with Liquid Studio 2019 (https://www.liquid-technologies.com)-->
+<xs:schema xmlns:core="http://www.agid.gov.it/schemas/pagoPa/common/" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" xmlns:tns="http://www.agid.gov.it/schemas/pagoPa/notification" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.agid.gov.it/schemas/pagoPa/notification" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:import schemaLocation="../common//pagoPa_complexTypes.xsd" namespace="http://www.agid.gov.it/schemas/pagoPa/common/" />
+    <!-- AVVISI -->
+    <xs:complexType name="ctNotificaDigitale">
+        <xs:sequence>
+            <xs:element name="soggettoPagatore" type="core:ctSoggettoPagatore" />
+            <xs:element name="numeroAvviso" type="core:stText25" />
+            <xs:element name="identificativoDominio" type="core:stPIVA" />
+            <xs:element name="dataScadenzaPagamento" type="xs:date" />
+            <xs:element name="dataInizioAvviso" type="xs:date" />
+            <xs:element name="dataScadenzaAvviso" type="xs:date" />
+            <xs:element name="denominazioneEnte" type="core:stText50">
+                <xs:annotation>
+                    <xs:documentation>denominazione dell'Ente Creditore, eventualmente abbreviata</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="importo" type="core:stImporto">
+                <xs:annotation>
+                    <xs:documentation>importo del pagamento attuale</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="oggettoDelPagamento" type="core:stText60">
+                <xs:annotation>
+                    <xs:documentation>Oggetto del pagamento</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="causaleDelPagamento" type="core:stText140">
+                <xs:annotation>
+                    <xs:documentation>causale del pagamento da apporre all'interno della ricevuta </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ctAvvisoDigitale">
+        <xs:annotation>
+            <xs:documentation>Tipo di dato che descrive un Avviso Digitale</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="tns:ctNotificaDigitale">
+                <xs:sequence>
+                    <xs:element name="settoreEnte" type="core:stText70">
+                        <xs:annotation>
+                            <xs:documentation>
+                                Denominazione
+                                dell'unità
+                                organizzativa che
+                                gestisce il
+                                pagamento
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="datiSingoloVersamento" type="core:ctDatiSingoloVersamentoRPT" maxOccurs="5">
+                        <xs:annotation>
+                            <xs:documentation>struttura dati che dettaglia i versamenti ( max 5) di cui è composto il pagamento</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="codiceConvenzione" type="core:stText35">
+                        <xs:annotation>
+                            <xs:documentation>codice convezione da applicare al pagamento</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- Root Element -->
+    <xs:element name="listaAvvisiDigitali">
+        <xs:annotation>
+            <xs:documentation>Struttura che raccoglie una lista di Avvisi Digitali da distribuire ai PSP abilitati</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="versioneOggetto" type="core:stText16" />
+                <xs:element name="avvisoDigitale" type="tns:ctAvvisoDigitale" minOccurs="1" maxOccurs="unbounded" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="notificaDigitale">
+        <xs:annotation>
+            <xs:documentation> Struttura che raccoglie le informazioni relative ad una notifica digitale recapitata ad un PSP a fronte di un invio di un Avviso Digitale da parte di un EC</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="tns:ctNotificaDigitale">
+                    <xs:sequence>
+                        <xs:element name="versioneOggetto" type="core:stText16" />
+                    </xs:sequence>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

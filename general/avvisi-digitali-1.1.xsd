@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" elementFormDefault="qualified"
+    targetNamespace="http://www.agid.gov.it/schemas/pagoPa/notification"
+    attributeFormDefault="unqualified"
+    xmlns:core="http://www.agid.gov.it/schemas/pagoPa/common/"
+    xmlns:tns="http://www.agid.gov.it/schemas/pagoPa/notification"
+    >
+	
+	
+ <xsd:import namespace="http://www.agid.gov.it/schemas/pagoPa/common/" schemaLocation="./pagoPa_complexTypes.xsd" />
+  
+	
+
+
+    <!-- AVVISI -->
+    <xsd:complexType name="ctAvvisoDigitale">
+        <xsd:sequence>
+            <xsd:element name="numeroAvviso" type="core:ctNumeroAvviso"/>
+			<xsd:element name="identificativoDominio" type="core:stText35"/>
+			<xsd:element name="denominazioneEnte" type="core:stText35"/>
+            <xsd:element name="soggettoPagatore" type="core:ctSoggettoPagatore"/>
+			<xsd:element name="dataInizioPagamento" type="core:stISODate"/>
+            <xsd:element name="dataScadenzaPagamento" type="core:stISODate"/>
+            <xsd:element name="dataScadenzaAvviso" type="core:stISODate"/>
+            <xsd:element name="importo" type="core:stImporto"/>
+            <xsd:element name="descrizione" type="sac:stText140"/>
+            <xsd:element name="urlAvviso" type="xsd:anyURL" minOccurs="0"/>
+			<xsd:element name="datiSingoloVersamento" type="sac:ctDatiSingoloVersamentoRPT" maxOccurs="5"/>
+			<xsd:element name="tipoPagamento" type="core:stTipoPagamento"/>
+			<xsd:element name="codiceConvenzione" type="core:stText35"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- Root Element -->
+    <xsd:element name="listaAvvisiDigitali">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="versioneOggetto" type="sac:stText16" />
+                <xsd:element name="avvisoDigitale" type="sac:ctAvvisoDigitale" minOccurs="1" maxOccurs="unbounded" />
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+</xsd:schema>

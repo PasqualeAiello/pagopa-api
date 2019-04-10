@@ -1,0 +1,67 @@
+﻿
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Liquid Studio 2019 (https://www.liquid-technologies.com) -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://www.agid.gov.it/schemas/pagoPa/nodo" elementFormDefault="qualified"
+    attributeFormDefault="unqualified" version="6.2.0"
+    xmlns:core="http://www.agid.gov.it/schemas/pagoPa/common/"
+    xmlns:tns="http://www.agid.gov.it/schemas/pagoPa/nodo"
+    xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" vc:minVersion="1.0">
+
+
+    <xsd:import namespace="http://www.agid.gov.it/schemas/pagoPa/common/"
+        schemaLocation="../common/pagoPa_complexTypes.xsd"/>
+
+
+
+    <xsd:complexType name="ctRisposta">
+        <xsd:sequence>
+            <xsd:element name="fault" type="core:ctFaultBean" minOccurs="0" />
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:simpleType name="stIdentificativoServizio">
+        <xsd:restriction base="xsd:string">
+            <xsd:length value="5" />
+        </xsd:restriction>
+    </xsd:simpleType>
+    
+    
+    <xsd:complexType name="ctNodoChiediNumeroAvviso">
+        <xsd:sequence>
+            <xsd:element name="identificativoPSP" type="core:stText35" minOccurs="1" />
+            <xsd:element name="identificativoIntermediarioPSP" type="core:stText35" minOccurs="1" />
+            <xsd:element name="identificativoCanale" type="core:stText35" minOccurs="1" />
+            <xsd:element name="password" type="core:stPassword" minOccurs="1" />
+            <xsd:element name="idServizio" type="tns:stIdentificativoServizio" minOccurs="1" />
+            <xsd:element name="idDominioErogatoreServizio" type="core:stText35" minOccurs="1" />
+            <xsd:element name="datiSpecificiServizio" type="xsd:base64Binary" minOccurs="1" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    
+
+        <xsd:complexType name="ctNodoChiediNumeroAvvisoRisposta">
+            <xsd:sequence>
+                <xsd:element name="nodoChiediNumeroAvvisoRisposta">
+                    <xsd:complexType>                     
+                            <xsd:complexContent>
+                                <xsd:extension base="ppt:ctRisposta">
+                                    <xsd:sequence>
+                                        <xsd:element name="esito" type="xsd:string" minOccurs="1" />
+                                        <xsd:element name="identificativoDominio" type="pay_i:stText35" minOccurs="0" />
+                                        <xsd:element name="numeroAvviso" type="ppt:ctNumeroAvviso" minOccurs="0" />
+                                        <xsd:element name="datiPagamentoPA" type="ppt:ctDatiPagamentoPA" minOccurs="0" />
+                                    </xsd:sequence>
+                                </xsd:extension>
+                            </xsd:complexContent>                       
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    
+    <!-- WRAPPER -->
+    <xsd:element name="nodoChiediNumeroAvviso" type="tns:ctNodoChiediNumeroAvviso"></xsd:element>
+    <xsd:element name="nodoChiediNumeroAvviso" type="tns:ctNodoChiediNumeroAvvisoRisposta"></xsd:element> 
+
+</xsd:schema>

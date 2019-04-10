@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Liquid Studio 2019 (https://www.liquid-technologies.com) -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://www.agid.gov.it/schemas/pagoPa/nodo" elementFormDefault="qualified"
+    attributeFormDefault="unqualified" version="6.2.0"
+    xmlns:core="http://www.agid.gov.it/schemas/pagoPa/common/"
+    xmlns:tns="http://www.agid.gov.it/schemas/pagoPa/nodo"
+    xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" vc:minVersion="1.0">
+
+
+    <xsd:import namespace="http://www.agid.gov.it/schemas/pagoPa/common/"
+        schemaLocation="../common/pagoPa_complexTypes.xsd"/>
+
+   
+
+    <xsd:complexType name="risposta">
+        <xsd:sequence>
+            <xsd:element name="fault" type="core:ctFaultBean" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="ctNodoChiediElencoNotificheDigitali">
+        <xsd:sequence>
+            <xsd:element name="identificativoPSP" type="core:stText35" minOccurs="1"/>
+            <xsd:element name="identificativoIntermediarioPSP" type="core:stText35" minOccurs="1"/>
+            <xsd:element name="identificativoCanale" type="core:stText35" minOccurs="1"/>
+            <xsd:element name="codiceFiscaleUtente" type="core:stText35" minOccurs="1"/>
+            <xsd:element name="codiceFiscalePA" type="core:stText35" minOccurs="1"/>
+            <!-- <xsd:element name="codiceServizio" type="core:stCodiceServizio" minOccurs="0" maxOccurs="1"/>  -->
+           <xsd:element name="periodoRiferimento" type="core:ctPeriodiDiRiferimento" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="ctNodoChiediElencoNotificheDigitaliRisposta">
+        <xsd:complexContent>
+            <xsd:extension base="tns:risposta">
+                <xsd:sequence>
+                    <xsd:element name="esitoOperazione" type="xsd:string"/>
+                    <xsd:element name="elencoNotificheDigitali"  minOccurs="0" maxOccurs="1">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="notificaDigitale" minOccurs="1" type="xsd:base64Binary"></xsd:element>    
+                            </xsd:sequence>                            
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+    <!-- Wrapper Elements -->
+   
+    
+    <xsd:element name="nodoChiediElencoAvvisiDigitali" type="tns:ctNodoChiediElencoNotificheDigitali" />
+    <xsd:element name="nodoChiediElencoAvvisiDigitaliRisposta" type="tns:ctNodoChiediElencoNotificheDigitaliRisposta" />
+
+</xsd:schema>
