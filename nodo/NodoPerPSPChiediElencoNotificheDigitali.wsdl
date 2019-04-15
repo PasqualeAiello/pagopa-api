@@ -12,31 +12,29 @@
     <wsdl:types>
         <xsd:schema>
             <xsd:import namespace="http://www.agid.gov.it/schemas/pagoPa/nodo" schemaLocation="./NodoPerPSPChiediElencoNotificheDigitali.xsd"></xsd:import>
-            
-
         </xsd:schema>
     </wsdl:types>
 
-    <wsdl:message name="nodoChiediElencoAvvisiDigitali">
+    <wsdl:message name="nodoChiediElencoNotificheDigitali">
         <wsdl:part name="bodyrichiesta" element="nodo:nodoChiediElencoNotificheDigitali"/>
     </wsdl:message>
-    <wsdl:message name="nodoChiediElencoAvvisiDigitaliRisposta">
+    <wsdl:message name="nodoChiediElencoNotificheDigitaliRisposta">
         <wsdl:part name="bodyrisposta" element="nodo:nodoChiediElencoNotificheDigitaliRisposta"/>
     </wsdl:message>
 
-    <wsdl:portType name="NodoChiediElencoAvvisiDigitali">
-        <wsdl:operation name="nodoChiediElencoAvvisiDigitali">
-            <wsdl:input message="tns:nodoChiediElencoAvvisiDigitali"
-                        wsam:Action="http://ws.pagamenti.telematici.gov/PPT/nodoChiediElencoAvvisiDigitali"/>
-            <wsdl:output message="tns:nodoChiediElencoAvvisiDigitaliRisposta"
-                         wsam:Action="http://ws.pagamenti.telematici.gov/PPT/nodoChiediElencoAvvisiDigitaliRisposta"/>
+    <wsdl:portType name="NodoChiediElencoNotificheDigitali">
+        <wsdl:operation name="NodoChiediElencoNotificheDigitali">
+            <wsdl:input message="tns:nodoChiediElencoNotificheDigitali"
+                        wsam:Action="http://ws.pagamenti.telematici.gov/PPT/NodoChiediElencoNotificheDigitali"/>
+            <wsdl:output message="tns:nodoChiediElencoNotificheDigitaliRisposta"
+                         wsam:Action="http://ws.pagamenti.telematici.gov/PPT/NodoChiediElencoNotificheDigitaliRisposta"/>
         </wsdl:operation>
     </wsdl:portType>
 
-    <wsdl:binding name="NodoChiediElencoAvvisiDigitaliBinding" type="tns:NodoChiediElencoAvvisiDigitali">
+    <wsdl:binding name="NodoChiediElencoNotificheDigitaliBinding" type="tns:NodoChiediElencoNotificheDigitali">
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
-        <wsdl:operation name="nodoChiediElencoAvvisiDigitali">
-            <soap:operation soapAction="nodoChiediElencoAvvisiDigitali"/>
+        <wsdl:operation name="NodoChiediElencoNotificheDigitali">
+            <soap:operation soapAction="NodoChiediElencoNotificheDigitali"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -46,8 +44,8 @@
         </wsdl:operation>
     </wsdl:binding>
 
-    <wsdl:service name="NodoChiediElencoAvvisiDigitaliService">
-        <wsdl:port name="PPTPort" binding="tns:NodoChiediElencoAvvisiDigitaliBinding">
+    <wsdl:service name="NodoChiediElencoNotificheDigitaliService">
+        <wsdl:port name="PPTPort" binding="tns:NodoChiediElencoNotificheDigitaliBinding">
             <soap:address location="http://PuntoAccessoPSP.spcoop.gov.it/"/>
         </wsdl:port>
     </wsdl:service>
