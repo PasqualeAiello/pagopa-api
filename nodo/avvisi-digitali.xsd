@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema attributeFormDefault="unqualified"
+            elementFormDefault="qualified"
+            version="1.0"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:sac="http://ws.pagamenti.telematici.gov/"
+            targetNamespace="http://ws.pagamenti.telematici.gov/">
+
+    <xsd:include schemaLocation="sac-common-types-1.0.xsd"  />
+
+
+    <!-- AVVISI -->
+	
+	 <xsd:complexType name="ctDatiPagamento">
+	 <xsd:sequence>
+		 <xsd:element name="dataScadenza" type="sac:stISODate">
+			 <annotation>
+			 <documentation>data entro la quale l’importo è valido. </documentation></annotation>
+			</element>	
+		 <xsd:element name="importo" type="sac:stImporto">
+				 <annotation>
+					<documentation>definisce la versione di un avviso di pagamento.</documentation>
+				 </annotation>
+			</element>		
+		 <xsd:element name="causaleVersamento" type="sac:stText170">
+			 <annotation>
+					<documentation>causale del versamento</documentation>
+				 </annotation>
+			</element>		
+	  </xsd:sequence>
+	 </xsd:complexType>
+	
+	
+	<xsd:complexType name="ctDatiSingoloVersamento">
+	 <xsd:element name="ibanAccredito" type="sac:stIBANIdentifier">
+		<annotation>
+			 <documentation>iban da utilizzare per il riversamento degli incassi verso l’EC da parte del PSP che ha eseguito l’incasso. </documentation></annotation>
+		</element>	
+	 <xsd:element name="datiSpecificiRiscossione" type="sac:stText35"> 
+			 <annotation>
+				<documentation>Rappresenta l’indicazione dell’imputazione della specifica entrata ed è così articolato:
+									tipo_contabilità/codice_contabilità
+									Dove tipo_contabilità ha il seguente significato:
+									0	Capitolo e articolo di Entrata del Bilancio dello Stato
+									1	Numero della contabilità speciale
+									2	Codice SIOPE
+									9          Altro codice ad uso dell’Ente Creditore
+				</documentation>
+			 </annotation>
+		</element>		
+	 </xsd:complexType>
+	
+    <xsd:complexType name="ctAvvisoDiPagamentoDigitale">
+        <xsd:sequence>
+		    <xsd:element name="numeroAvviso" type="sac:stText35">
+				<annotation>
+						<documentation>identifica la posizione debitoria all’interno dell’archivio dei pagamenti dell’EC</documentation>
+				</annotation>
+			</element>			
+			<xsd:element name="versione" type="xsd:integer">
+				<annotation>
+						<documentation>definisce la versione di un avviso di pagamento.</documentation>
+				</annotation>
+			</element>			
+			<xsd:element name="tipoPagamento" type="sac:stTipoPagamento">
+				<annotation>
+						<documentation>definisce se il servizio erogato dall’ente avviene contestualmente o meno al pagamento dell’utente (es. prestazione sanitaria, parcheggio). </documentation>
+				</annotation>
+			</element> 		
+            <xsd:element name="idDominio" type="sac:stText35">
+				<annotation>
+						<documentation>codice fiscale dell’ente creditore mittente dell’avviso</documentation>
+				</annotation>
+			</element> 
+			<xsd:element name="codiceConvenzione" type="sac:stText35">
+				<annotation>
+						<documentation>definisce una convenzione in essere con uno dei PSP aderenti al nodo, il quale (sulla base della convenzione stipulata con l’EC) può applicare sconti alle commissioni di pagamento.
+						</documentation>
+				</annotation>
+			</element>			
+			<xsd:element name="ibanAppoggio" type="sac:stText35">
+				<annotation>
+						<documentation>definisce un ibanPostale ove riversare le somme nel caso si utilizzi un metodo di pagamento messo a disposizione da PosteItaliane </documentation>
+				</annotation>
+			</element>			
+			<xsd:element name="dataInizioValidita" type="sac:stISODate">
+				<annotation>
+						<documentation>definisce la data a partire dalla quale l’avviso di pagamento risulta valido.</documentation>
+				</annotation>
+			</element>			
+			<xsd:element name="descrizione" type="sac:stText140">
+				<annotation>
+						<documentation>Oggetto del pagamento</documentation>
+				</annotation>
+			</element>			
+			<xsd:element name="idPagatore" type="sac:ctSoggettoPagatore">
+				<annotation>
+						<documentation>codice identificativo del soggetto (fisico o giuridico) destinatario dell’avviso</documentation>
+				</annotation>
+			</element>			
+			 
+			<xsd:element name="datiPagamento" type="sac:ctDatiPagamento" minOccurs="1" >
+				<annotation>
+						<documentation>Struttura che definisce l'importo dell'incasso fino alla dataScadenza dell'avviso</documentation>
+				</annotation>
+			</element>			
+			<xsd:element name="datiSingoloVersamento" type="sac:ctDatiSingoloVersamento" minOccurs="1" maxOccurs="5" >
+				<annotation>
+						<documentation>Struttura che definisce il riversamento dell'incasso all'interno degli iban dell'EC</documentation>
+				</annotation>
+			</element>			
+			
+        </xsd:sequence>
+    </xsd:complexType>
+
+	
+	<xsd:complexType name="ctNotificaDigitale">
+		  <xsd:sequence>
+		     <xsd:element name="numeroAvviso" type="sac:stText35">
+				<annotation>
+						<documentation>identifica la posizione debitoria all’interno dell’archivio dei pagamenti dell’EC</documentation>
+				</annotation>
+			</element>			
+			<xsd:element name="versione" type="xsd:integer">
+				<annotation>
+						<documentation>definisce la versione di un avviso di pagamento.</documentation>
+				</annotation>
+			</element>			
+			<xsd:element name="tipoPagamento" type="sac:stTipoPagamento">
+				<annotation>
+						<documentation>definisce se il servizio erogato dall’ente avviene contestualmente o meno al pagamento dell’utente (es. prestazione sanitaria, parcheggio). </documentation>
+				</annotation>
+			</element> 		
+            <xsd:element name="idDominio" type="sac:stText35">
+				<annotation>
+						<documentation>codice fiscale dell’ente creditore mittente dell’avviso</documentation>
+				</annotation>
+			</element> 
+			<xsd:element name="codiceConvenzione" type="sac:stText35">
+				<annotation>
+						<documentation>definisce una convenzione in essere con uno dei PSP aderenti al nodo, il quale (sulla base della convenzione stipulata con l’EC) può applicare sconti alle commissioni di pagamento.
+						</documentation>
+				</annotation>
+			</element>			
+					
+			<xsd:element name="dataInizioValidita" type="sac:stISODate">
+				<annotation>
+						<documentation>definisce la data a partire dalla quale l’avviso di pagamento risulta valido.</documentation>
+				</annotation>
+			</element>			
+			<xsd:element name="descrizione" type="sac:stText140">
+				<annotation>
+						<documentation>Oggetto del pagamento</documentation>
+				</annotation>
+			</element>			
+			<xsd:element name="idPagatore" type="sac:ctSoggettoPagatore">
+				<annotation>
+						<documentation>codice identificativo del soggetto (fisico o giuridico) destinatario dell’avviso</documentation>
+				</annotation>
+			</element>			
+			 							
+		  </sequence>
+	</complexType>
+    <!-- Root Element -->
+    <xsd:element name="listaAvvisiDigitali">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="versioneOggetto" type="sac:stText16" />
+                <xsd:element name="avvisoDigitale" type="sac:ctAvvisoDigitale" minOccurs="1" maxOccurs="unbounded" />
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <!-- ESITI AVVISI -->
+    <xsd:simpleType name="stCodiceEsito">
+        <xsd:restriction base="xsd:integer">
+            <xsd:minInclusive value="0" />
+            <xsd:maxInclusive value="99999" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="stTipoCanaleEsito">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[0-9]{1,1}" />
+            <xsd:enumeration value="0"/><!-- nessun canale -->
+            <xsd:enumeration value="1"/><!-- SMS -->
+            <xsd:enumeration value="2"/><!-- e-mail -->
+            <xsd:enumeration value="3"/><!-- mobile payment -->
+            <xsd:enumeration value="4"/><!-- altro canale PSP -->
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:complexType name="ctEsitoAvvisatura">
+        <xsd:sequence>
+            <xsd:element name="tipoCanaleEsito" type="sac:stTipoCanaleEsito" />
+            <xsd:element name="identificativoCanale" type="sac:stText35" minOccurs="0" />
+            <xsd:element name="dataEsito" type="sac:stISODate" />
+            <xsd:element name="codiceEsito" type="sac:stCodiceEsito" />
+            <xsd:element name="descrizioneEsito" type="sac:stText140" minOccurs="0" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="ctEsitoAvvisoDigitale">
+        <xsd:sequence>
+            <xsd:element name="identificativoDominio" type="sac:stText35" />
+            <xsd:element name="identificativoMessaggioRichiesta" type="sac:stIdentificativoMessaggioRichiesta" />
+            <xsd:element name="esitoAvvisatura" type="sac:ctEsitoAvvisatura" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="listaEsitoAvvisiDigitali">
+        <xsd:sequence>
+            <xsd:element name="versioneOggetto" type="sac:stText16" />
+            <xsd:element name="identificativoFlusso" type="sac:stIdentificativoFlusso" />
+            <xsd:element name="esitoAvvisoDigitale" type="sac:ctEsitoAvvisoDigitale" minOccurs="1" maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+	
+	<xsd:complexType name="ctDatiSingoloVersamento">
+        <xsd:sequence>
+            <xsd:element name="ibanAccredito" type="sac:stIBANIdentifier" minOccurs="0"/>
+            <xsd:element name="ibanAppoggio" type="sac:stIBANIdentifier" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+	
+		<xsd:simpleType name="stTipoOperazione">
+        <xsd:restriction base="xsd:string">
+            <xsd:length value="1"/>
+            <xsd:enumeration value="C"/><!-- Creazione di un nuovo avviso-->
+            <xsd:enumeration value="U"/><!-- Modifica di un avviso esistente -->
+            <xsd:enumeration value="D"/><!-- Cancellazione di un avviso esistente -->
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!-- Root Element -->
+    <xsd:element name="listaEsitoAvvisiDigitali" type="sac:listaEsitoAvvisiDigitali" />
+</xsd:schema>
