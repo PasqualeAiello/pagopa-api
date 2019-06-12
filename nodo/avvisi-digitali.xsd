@@ -61,7 +61,12 @@
 				<annotation>
 						<documentation>definisce la versione di un avviso di pagamento.</documentation>
 				</annotation>
-			</element>			
+			</element>
+		 <xsd:element name="oggetto" type="sac:stText35">
+				<annotation>
+						<documentation>oggetto del pagamento</documentation>
+				</annotation>
+			</element>
 			<xsd:element name="tipoPagamento" type="sac:stTipoPagamento">
 				<annotation>
 						<documentation>definisce se il servizio erogato dall’ente avviene contestualmente o meno al pagamento dell’utente (es. prestazione sanitaria, parcheggio). </documentation>
@@ -130,7 +135,12 @@
 				<annotation>
 						<documentation>definisce se il servizio erogato dall’ente avviene contestualmente o meno al pagamento dell’utente (es. prestazione sanitaria, parcheggio). </documentation>
 				</annotation>
-			</element> 		
+			</element> 	
+			  <xsd:element name="oggetto" type="sac:stText35">
+				<annotation>
+						<documentation>oggetto del pagamento</documentation>
+				</annotation>
+			</element>	
             <xsd:element name="idDominio" type="sac:stText35">
 				<annotation>
 						<documentation>codice fiscale dell’ente creditore mittente dell’avviso</documentation>
