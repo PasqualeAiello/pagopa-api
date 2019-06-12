@@ -147,7 +147,20 @@
 				<annotation>
 						<documentation>definisce la data a partire dalla quale l’avviso di pagamento risulta valido.</documentation>
 				</annotation>
-			</element>			
+			</element>
+			  
+			  <xsd:element name="dataScadenzaValidita" type="sac:stISODate">
+				<annotation>
+						<documentation>definisce la data entro la quale l’avviso di pagamento risulta valido.</documentation>
+				</annotation>
+			</element>
+			  
+			  <xsd:element name="importo" type="sac:stImporto">
+				<annotation>
+						<documentation>definisce l'importo da pagare</documentation>
+				</annotation>
+			</element>
+			  
 			<xsd:element name="descrizione" type="sac:stText140">
 				<annotation>
 						<documentation>Oggetto del pagamento</documentation>
