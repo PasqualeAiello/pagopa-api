@@ -33,16 +33,14 @@
 					<xsd:documentation>Riferimento univoco dell’operazione assegnato al pagamento dal Prestatore dei servizi di Pagamento. Può coincidere con il CRO ovvero TRN nel caso di Bonifico Bancario o con il CODELINE nel caso di versamento su c/c  postale.</xsd:documentation>
 				</xsd:annotation>
 			</xsd:element>			
-			<xsd:element name="statoPagamento" type="pay_i:stCodiceEsitoPagamento" minOccurs="1">
+			<xsd:element name="eventCode" type="pay_i:stText35" minOccurs="1">
 				<xsd:annotation>
-					<xsd:documentation>Campo numerico indicante l’esito del pagamento. Può assumere i seguenti valori:</xsd:documentation>
-					<xsd:documentation>0=Pagamento eseguito</xsd:documentation>
-					<xsd:documentation>3=Pagamento revocato</xsd:documentation>
+					<xsd:documentation>codice evento, come da documentazione</xsd:documentation>					
 				</xsd:annotation>
 			</xsd:element>
 			<xsd:element name="dateTime" type="pay_i:stISODateTime" minOccurs="1">
 				<xsd:annotation>
-					<xsd:documentation>Indica la data di esecuzione del pagamento, nel formato ISO 8601 [YYYY]-[MM]-[DD].</xsd:documentation>
+					<xsd:documentation>Indica la data/ora di rilevamento dell'evento</xsd:documentation>
 				</xsd:annotation>
 			</xsd:element>
 		</xsd:sequence>
@@ -54,29 +52,28 @@
 			<xsd:element name="id="pay_i:stText35" minOccurs="1">
 				<xsd:annotation>
 					<xsd:documentation>Identificativo legato alla trasmissione del giornale dei pagamenti</xsd:documentation>
-					<xsd:documentation>Deve essere univoco nell’ambito dell’anno di riferimento delle operazioni di pagamento cui si riferisce il flusso.</xsd:documentation>
-					<xsd:documentation>format GDP_<<Date>>_<<idSoggetto>> </xsd:documentation>
-					<xsd:documentation>GDP_([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))_[A-Z0-9]{8,11} </xsd:documentation>
+					<xsd:documentation>Deve essere univoco nell’ambito dell’anno di riferimento delle operazioni di pagamento cui si riferisce il flusso.</xsd:documentation>				
+					<xsd:documentation>GDP_tipoMittente_identificativoMittente_data_progressivo  </xsd:documentation>
 				</xsd:annotation>
 			</xsd:element>		
-			<xsd:element name="identificativoSoggetto" type="pay_i:stText35" minOccurs="1">
+			<xsd:element name="identificativoMittente" type="pay_i:stText35" minOccurs="1">
 				<xsd:annotation>
-					<xsd:documentation>Riferimento. assegnato dal prestatore di servizi di pagamento all’operazione di trasferimento fondi con la quale viene regolato contabilmente il riversamento delle somme incassate.</xsd:documentation>
+					<xsd:documentation>idDominio o identificativoPSP</xsd:documentation>
 				</xsd:annotation>
 			</xsd:element>
-			<xsd:element name="dataRegolamento" type="pay_i:stISODate" minOccurs="1">
+			<xsd:element name="data" type="pay_i:stISODate" minOccurs="1">
 				<xsd:annotation>
-					<xsd:documentation>Indica la data di esecuzione dell’operazione di trasferimento fondi con la quale viene regolato contabilmente il riversamento delle somme incassate, nel formato ISO 8601 [YYYY]-[MM]-[DD].</xsd:documentation>
+					<xsd:documentation>Indica la data di riferimento del giornale dei pagamenti, nel formato ISO 8601 [YYYY]-[MM]-[DD].</xsd:documentation>
 				</xsd:annotation>
 			</xsd:element>			
-			<xsd:element name="numeroTotalePagamenti" type="pay_i:stNumeroTotalePagamenti" minOccurs="1">
+			<xsd:element name="numeroTotalePagamenti" type="pay_i:stNumeroTotalePagamenti" minOccurs="0">
 				<xsd:annotation>
-					<xsd:documentation>Numero dei pagamenti presenti nel flusso.</xsd:documentation>
+					<xsd:documentation>Numero dei pagamenti presenti nel giornale.</xsd:documentation>
 					<xsd:documentation>Deve essere maggiore di 1</xsd:documentation>
 				</xsd:annotation>
 			</xsd:element>
 			</xsd:element>
-			<xsd:element name="datiSingoliPagamenti" type="pay_i:ctDatiSingoliPagamenti" minOccurs="1" maxOccurs="unbounded">
+			<xsd:element name="datiSingoliEventi" type="pay_i:ctDatoEvento" minOccurs="1" maxOccurs="unbounded">
 				<xsd:annotation>
 					<xsd:documentation>Aggregazione con un numero di occorrenze pari all’elemento numeroTotalePagamenti.</xsd:documentation>
 				</xsd:annotation>
@@ -90,7 +87,7 @@
 	<!-- **** BEGIN: elementi ****-->
 	<xsd:element name="GiornarePagamenti" type="pay_i:ctGiornarePagamenti
 		<xsd:annotation>
-			<xsd:documentation>Flusso di Riversamento che i prestatori dei servizi di pagamento devono mettere a disposizione degli enti creditori loro clienti</xsd:documentation>
+			<xsd:documentation>giornale dei pagamenti, che evidenzia gli eventi relativi ai pagamenti della giornata operativa</xsd:documentation>
 		</xsd:annotation>
 	</xsd:element>
 	<!-- **** END: elementi ****-->
