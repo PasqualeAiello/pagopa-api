@@ -79,13 +79,14 @@ Specificatamente per il PSP, vengono definite le condizioni che generano lo stat
 ### eventCode EC
 
 Specificatamente per l'EC, vengono definite le condizioni che generano lo stato ( trigger)
+
 |Event Code   			| Trigger	| 
 |---					|---			|	
 |RPT_ATTIVATA_PA	| generato a seguito di una risposta positiva alla primitiva paaAttivaRPT
-|RPT_ACCETTATA_NODO |generato a seguito di una risposta positiva alla primitiva nodoInviaRPT / nodoInviaCarrelloRPT
+|RPT_ACCETTATA_NODO | generato a seguito di una risposta positiva alla primitiva nodoInviaRPT / nodoInviaCarrelloRPT
 |RPT_RIFIUTATA_NODO| generato a seguito di una risposta negativa alla primitiva nodoInviaRPT / nodoInviaCarrelloRPT	
-|RT_ACCETTATA_PA		|generato a seguito di una risposta positiva alla primitiva paaInviaRT |
-|RT_RIFIUTATA_PA		|generato a seguito di una risposta negativa alla primitiva paaInviaRT |
+|RT_ACCETTATA_PA		|generato a seguito di una risposta positiva alla primitiva paaInviaRT 
+|RT_RIFIUTATA_PA		|generato a seguito di una risposta negativa alla primitiva paaInviaRT 
 |*RPT_ATTIVATA_PA*| generato a seguito di una risposta positiva alla primitiva paaAttivaRPT
 |*RPT_ATTIVATA_ERRORE*| generato a seguito di una risposta negativa alla primitiva paaAttivaRPT
  
