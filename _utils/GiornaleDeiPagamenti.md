@@ -14,7 +14,7 @@ Ogni evento riportato è caratterizzato dai seguenti elementi :
 ## Stato della posizione debitoria
 Il diagramma riporta il ciclo di vita di un pagamento 
 
-![pagoPA posizione debitoria](https://www.planttext.com/plantuml/svg/b9113e8m54Jt_nH_gIPSm8MXALMRA3Iqij0OWz954wG9b8rNS-6Hl898K96uSVjdtap-tAytlt9fwUfp3k2CopLISyejPWRh8aLXAtCnjj0OwADnjZGfZaGmXjraZvutGn4SY58y8LiUXGod60jrY3bTSYOLwMjzv6CGP47MB5HHX_8muQIzmo3wJ_INhulW8ILIlZ12ALCj9mNqr7TVmcBvLJHVRHe33CKdqFm80BukicRHXm030000)
+![pagoPA posizione debitoria](https://www.plantuml.com/plantuml/svg/ZP3F2i8m38VlUOgUXRs01rceHNkmAslOGP4niKXXMsMh5v_U_SDjuC4Sy_k-X2HkGz64LrK211TAoxHltTlvshAzlRdW6rUmP_7m6W4kcokBeXr38fdXMIPAR5cgAKybFqfX2FD5zCNdLEC1Jq9HmaPFgapYq8U5-B_q2-fbgJWQaumySYw81iDecA9fHoPICmzViTszGwsWtkhEWjZMz-vf7m00)
 
 
 
