@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+           xmlns:common="http://pagopa-api.pagopa.gov.it/common/xsd/common.xsd"
+           xmlns:tns="http://pagopa-api.pagopa.gov.it/general/xsd/TabellaDelleControparti.xsd"
+           targetNamespace="http://pagopa-api.pagopa.gov.it/general/xsd/TabellaDelleControparti.xsd">
+
+    <xs:annotation>
+        <xs:documentation>Tabella delle controparti</xs:documentation>
+    </xs:annotation>
+
+    <xsd:import schemaLocation="../../common/xsd/common.xsd" namespace="http://pagopa-api.pagopa.gov.it/common/xsd/common.xsd"/>
+
+    <xs:element name="listaInformativeControparte" type="tns:ctListaInformativeControparte"/>
+    <xs:element name="informativaControparte" type="tns:ctInformativaControparte"/>
+
+
+    <xs:simpleType name="stDateTimeGiornoOra">
+        <xs:restriction base="xs:dateTime">
+            <xs:pattern value="\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="stPagamentiPressoPSP">
+        <xs:restriction base="xs:int">
+            <xs:enumeration value="0"/> <!-- la PA NON consente i pagamenti c/o PSP -->
+            <xs:enumeration value="1"/> <!-- la PA PSP CONSENTE i pagamenti c/o PSP  -->
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <xs:simpleType name="stTipoPeriodo">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="giornaliera"/>
+            <xs:enumeration value="settimanale"/>
+            <xs:enumeration value="mensile"/>
+            <xs:enumeration value="annuale"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="ctListaInformativeControparte">
+        <xs:sequence>
+            <xs:element name="informativaControparte" type="tns:ctInformativaControparte" maxOccurs="unbounded"
+                        minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ctInformativaControparte">
+        <xs:sequence>
+            <xs:element type="common:stText35" name="identificativoFlusso"/>
+            <xs:element type="common:stText35" name="identificativoDominio"/>
+            <xs:element type="common:stText70" name="ragioneSociale"/>
+            <xs:element type="tns:stDateTimeGiornoOra" name="dataPubblicazione"/>
+            <xs:element type="tns:stDateTimeGiornoOra" name="dataInizioValidita"/>
+            <xs:element type="tns:stPagamentiPressoPSP" name="pagamentiPressoPSP"/>
+            <xs:element type="tns:ctErogazioneServizio" name="erogazioneServizio"/>
+        </xs:sequence>
+
+    </xs:complexType>
+
+    <xs:complexType name="ctFasciaOraria">
+        <xs:sequence>
+            <xs:element type="xs:time" name="fasciaOrariaDa" minOccurs="0"/>
+            <xs:element type="xs:time" name="fasciaOrariaA" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ctErogazione">
+        <xs:sequence>
+            <xs:element name="tipoPeriodo" type="tns:stTipoPeriodo" minOccurs="0"/>
+            <xs:element name="giorno" type="common:stText35" minOccurs="0"/>
+            <xs:element name="fasciaOraria" type="tns:ctFasciaOraria" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ctErogazioneServizio">
+        <xs:sequence>
+            <xs:element type="tns:ctErogazione" name="disponibilita" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element type="tns:ctErogazione" name="indisponibilita" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+</xs:schema>

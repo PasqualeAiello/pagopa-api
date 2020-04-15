@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema attributeFormDefault="unqualified"
+<xsd:schema xmlns:common="http://pagopa-api.pagopa.gov.it/common/xsd/common.xsd"
             elementFormDefault="qualified"
-            version="1.0"
             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-            xmlns:sac="http://ws.pagamenti.telematici.gov/"
-            targetNamespace="http://ws.pagamenti.telematici.gov/">
+            xmlns:tns="http://pagopa-api.pagopa.gov.it/general/xsd/presa-in-carico.xsd"
+            targetNamespace="http://pagopa-api.pagopa.gov.it/general/xsd/presa-in-carico.xsd">
 
-    <xsd:include schemaLocation="sac-common-types-1.0.xsd"/>
+    <xsd:import schemaLocation="../../common/xsd/common.xsd" namespace="http://pagopa-api.pagopa.gov.it/common/xsd/common.xsd"/>
 
     <xsd:simpleType name="stCodiceEsitoPresaInCarico">
         <xsd:restriction base="xsd:integer">
@@ -22,11 +21,11 @@
 
     <xsd:complexType name="ctEsitoPresaInCarico">
         <xsd:sequence>
-            <xsd:element name="identificativoFlusso" type="sac:stIdentificativoFlusso"/>
-            <xsd:element name="codiceEsitoPresaInCarico" type="sac:stCodiceEsitoPresaInCarico"/>
-            <xsd:element name="descrizioneEsitoPresaInCarico" type="sac:stText140" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="identificativoFlusso" type="common:stIdentificativoFlusso"/>
+            <xsd:element name="codiceEsitoPresaInCarico" type="tns:stCodiceEsitoPresaInCarico"/>
+            <xsd:element name="descrizioneEsitoPresaInCarico" type="common:stText140" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
 
-    <xsd:element name="esitoPresaInCarico" type="sac:ctEsitoPresaInCarico"/>
+    <xsd:element name="esitoPresaInCarico" type="tns:ctEsitoPresaInCarico"/>
 </xsd:schema>

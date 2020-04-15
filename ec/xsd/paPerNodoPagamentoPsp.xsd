@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:common="http://pagopa-api.pagopa.gov.it/common/xsd/common.xsd"
+            xmlns:tns="http://pagopa-api.pagopa.gov.it/ec/xsd/paPerNodoPagamentoPsp.xsd"
+            xmlns:rptrt="http://pagopa-api.pagopa.gov.it/common/xsd/rpt-rt.xsd"
+            elementFormDefault="qualified"
+            targetNamespace="http://pagopa-api.pagopa.gov.it/ec/xsd/paPerNodoPagamentoPsp.xsd">
+
+
+    <xsd:import schemaLocation="../../common/xsd/common.xsd" namespace="http://pagopa-api.pagopa.gov.it/common/xsd/common.xsd"/>
+    <xsd:import schemaLocation="../../common/xsd/rpt-rt.xsd" namespace="http://pagopa-api.pagopa.gov.it/common/xsd/rpt-rt.xsd"/>
+
+    <xsd:element name="paPerNodoPagamentoPspHeader" type="common:intestazionePPT"/>
+
+    <xsd:element name="paaVerificaRPT" type="tns:paaVerificaRPT"/>
+    <xsd:element name="paaVerificaRPTRisposta" type="tns:paaVerificaRPTRisposta"/>
+    <xsd:element name="paaAttivaRPT" type="tns:paaAttivaRPT"/>
+    <xsd:element name="paaAttivaRPTRisposta" type="tns:paaAttivaRPTRisposta"/>
+
+    <xsd:complexType name="paaTipoDatiPagamentoPA">
+        <xsd:sequence>
+            <xsd:element name="importoSingoloVersamento" type="common:stImporto">
+            </xsd:element>
+            <xsd:element name="ibanAccredito" type="common:stIBANIdentifier">
+            </xsd:element>
+            <xsd:element name="bicAccredito" type="common:stBICIdentifier" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="enteBeneficiario" type="rptrt:ctEnteBeneficiario" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="credenzialiPagatore" type="common:stText35" minOccurs="0">
+            </xsd:element>
+            <xsd:choice>
+                <xsd:element name="causaleVersamento" type="common:stCausaleVersamento"/>
+                <xsd:element name="spezzoniCausaleVersamento" type="common:ctSpezzoniCausaleVersamento"/>
+            </xsd:choice>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="paaTipoDatiPagamentoPSP">
+        <xsd:sequence>
+            <xsd:element name="importoSingoloVersamento" type="common:stImporto">
+            </xsd:element>
+            <xsd:element name="ibanAppoggio" type="common:stIBANIdentifier" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="bicAppoggio" type="common:stBICIdentifier" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="soggettoVersante" type="rptrt:ctSoggettoVersante" minOccurs="0"/>
+            <!-- TODO: Da valutare -->
+            <xsd:element name="ibanAddebito" type="common:stIBANIdentifier" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="bicAddebito" type="common:stBICIdentifier" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="soggettoPagatore" type="rptrt:ctSoggettoPagatore" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="paaVerificaRPT">
+        <xsd:sequence>
+            <xsd:element name="identificativoPSP" type="common:stText35"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="paaVerificaRPTRisposta">
+        <xsd:sequence>
+            <xsd:element name="paaVerificaRPTRisposta" type="tns:esitoVerificaRPT"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="esitoVerificaRPT">
+        <xsd:complexContent>
+            <xsd:extension base="tns:risposta">
+                <xsd:sequence>
+                    <xsd:element name="esito" type="xsd:string"/>
+                    <xsd:element name="datiPagamentoPA" type="tns:paaTipoDatiPagamentoPA" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="paaAttivaRPT">
+        <xsd:sequence>
+            <xsd:element name="identificativoPSP" type="common:stText35"/>
+            <xsd:element name="datiPagamentoPSP" type="tns:paaTipoDatiPagamentoPSP"/>
+            <xsd:element name="identificativoIntermediarioPSP" type="common:stText35"/>
+            <xsd:element name="identificativoCanalePSP" type="common:stText35"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="paaAttivaRPTRisposta">
+        <xsd:sequence>
+            <xsd:element name="paaAttivaRPTRisposta" type="tns:esitoAttivaRPT"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="esitoAttivaRPT">
+        <xsd:complexContent>
+            <xsd:extension base="tns:risposta">
+                <xsd:sequence>
+                    <xsd:element name="esito" type="xsd:string"/>
+                    <xsd:element name="datiPagamentoPA" type="tns:paaTipoDatiPagamentoPA" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="risposta">
+        <xsd:sequence>
+            <xsd:element name="fault" type="common:ctFaultBean" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

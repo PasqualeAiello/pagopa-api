@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:common="http://pagopa-api.pagopa.gov.it/common/xsd/common.xsd"
+            xmlns:tns="http://pagopa-api.pagopa.gov.it/nodo/xsd/nodoPerPa.xsd"
+            xmlns:xmime="http://www.w3.org/2005/05/xmlmime"
+            elementFormDefault="qualified"
+            targetNamespace="http://pagopa-api.pagopa.gov.it/nodo/xsd/nodoPerPa.xsd">
+
+    <xsd:import schemaLocation="../../common/xsd/common.xsd" namespace="http://pagopa-api.pagopa.gov.it/common/xsd/common.xsd"/>
+
+    <xsd:element name="nodoPerPaHeader">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="identificativoIntermediarioPA" type="common:stText35"/>
+                <xsd:element name="identificativoStazioneIntermediarioPA" type="common:stText35"/>
+                <xsd:element name="identificativoDominio" type="common:stText35"/>
+                <xsd:element name="identificativoUnivocoVersamento" type="common:stText35"/>
+                <xsd:element name="codiceContestoPagamento" type="common:stText35"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="nodoPerPaCarrelloHeader">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="identificativoIntermediarioPA" type="common:stText35"/>
+                <xsd:element name="identificativoStazioneIntermediarioPA" type="common:stText35"/>
+                <xsd:element name="identificativoCarrello" type="common:stText35"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+
+    <xsd:simpleType name="stPassword">
+        <xsd:restriction base="xsd:string">
+            <xsd:minLength value="8"/>
+            <xsd:maxLength value="15"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="stEffettuazioneScelta">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="SI"/>
+            <xsd:enumeration value="NO"/>
+            <xsd:enumeration value="PO"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:element name="nodoChiediCopiaRT" type="tns:nodoChiediCopiaRT"/>
+    <xsd:element name="nodoChiediCopiaRTRisposta" type="tns:nodoChiediCopiaRTRisposta"/>
+
+    <xsd:element name="nodoInviaRichiestaStorno" type="tns:nodoInviaRichiestaStorno"/>
+    <xsd:element name="nodoInviaRichiestaStornoRisposta" type="tns:nodoInviaRichiestaStornoRisposta"/>
+
+    <xsd:element name="nodoInviaRispostaRevoca" type="tns:nodoInviaRispostaRevoca"/>
+    <xsd:element name="nodoInviaRispostaRevocaRisposta" type="tns:nodoInviaRispostaRevocaRisposta"/>
+
+    <xsd:element name="nodoChiediListaPendentiRPT" type="tns:nodoChiediListaPendentiRPT"/>
+    <xsd:element name="nodoChiediListaPendentiRPTRisposta" type="tns:nodoChiediListaPendentiRPTRisposta"/>
+
+    <xsd:element name="nodoChiediStatoRPT" type="tns:nodoChiediStatoRPT"/>
+    <xsd:element name="nodoChiediStatoRPTRisposta" type="tns:nodoChiediStatoRPTRisposta"/>
+
+    <xsd:element name="nodoInviaRPT" type="tns:nodoInviaRPT"/>
+    <xsd:element name="nodoInviaRPTRisposta" type="tns:nodoInviaRPTRisposta"/>
+
+    <xsd:element name="nodoInviaCarrelloRPT" type="tns:nodoInviaCarrelloRPT"/>
+    <xsd:element name="nodoInviaCarrelloRPTRisposta" type="tns:nodoInviaCarrelloRPTRisposta"/>
+
+    <xsd:element name="nodoChiediInformativaPSP" type="tns:nodoChiediInformativaPSP"/>
+    <xsd:element name="nodoChiediInformativaPSPRisposta" type="tns:nodoChiediInformativaPSPRisposta"/>
+
+    <xsd:element name="nodoPAChiediInformativaPA" type="tns:nodoPAChiediInformativaPA"/>
+    <xsd:element name="nodoPAChiediInformativaPARisposta" type="tns:nodoPAChiediInformativaPARisposta"/>
+
+    <xsd:element name="nodoChiediElencoQuadraturePA" type="tns:nodoChiediElencoQuadraturePA"/>
+    <xsd:element name="nodoChiediElencoQuadraturePARisposta" type="tns:nodoChiediElencoQuadraturePARisposta"/>
+
+    <xsd:element name="nodoChiediQuadraturaPA" type="tns:nodoChiediQuadraturaPA"/>
+    <xsd:element name="nodoChiediQuadraturaPARisposta" type="tns:nodoChiediQuadraturaPARisposta"/>
+
+    <xsd:element name="nodoChiediElencoFlussiRendicontazione" type="tns:nodoChiediElencoFlussiRendicontazione"/>
+    <xsd:element name="nodoChiediElencoFlussiRendicontazioneRisposta"
+                 type="tns:nodoChiediElencoFlussiRendicontazioneRisposta"/>
+
+    <xsd:element name="nodoChiediFlussoRendicontazione" type="tns:nodoChiediFlussoRendicontazione"/>
+    <xsd:element name="nodoChiediFlussoRendicontazioneRisposta" type="tns:nodoChiediFlussoRendicontazioneRisposta"/>
+
+    <xsd:element name="nodoChiediSceltaWISP" type="tns:nodoChiediSceltaWISP"/>
+    <xsd:element name="nodoChiediSceltaWISPRisposta" type="tns:nodoChiediSceltaWISPRisposta"/>
+
+
+    <xsd:complexType name="nodoChiediStatoRPT">
+        <xsd:sequence>
+            <xsd:element name="identificativoIntermediarioPA" type="common:stText35"/>
+            <xsd:element name="identificativoStazioneIntermediarioPA" type="common:stText35"/>
+            <xsd:element name="password" type="tns:stPassword"/>
+            <xsd:element name="identificativoDominio" type="common:stText35"/>
+            <xsd:element name="identificativoUnivocoVersamento" type="common:stText35"/>
+            <xsd:element name="codiceContestoPagamento" type="common:stText35"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="nodoChiediStatoRPTRisposta">
+        <xsd:complexContent>
+            <xsd:extension base="common:ctRisposta">
+                <xsd:sequence>
+                    <xsd:element name="esito" type="tns:esitoChiediStatoRPT"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="esitoChiediStatoRPT">
+        <xsd:sequence>
+            <xsd:element name="stato" type="xsd:string"/>
+            <xsd:element name="redirect" type="xsd:int" default="0" minOccurs="0"/>
+            <xsd:element name="url" type="xsd:string" default="" minOccurs="0"/>
+            <xsd:element name="elementoStoricoRPT" type="tns:tipoStoricoRPT" nillable="true" minOccurs="0"
+                         maxOccurs="unbounded"/>
+            <xsd:element name="elementoStoricoVersamento" type="tns:tipoStoricoVersamento" nillable="true" minOccurs="0"
+                         maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="tipoStoricoRPT">
+        <xsd:sequence>
+            <xsd:element name="data" type="xsd:dateTime"/>
+            <xsd:element name="stato" type="xsd:string"/>
+            <xsd:element name="descrizione" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="tipoStoricoVersamento">
+        <xsd:sequence>
+            <xsd:element name="progressivo" type="xsd:int"/>
+            <xsd:element name="data" type="xsd:dateTime"/>
+            <xsd:element name="stato" type="xsd:string"/>
+            <xsd:element name="descrizione" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="nodoChiediCopiaRT">
+        <xsd:sequence>
+            <xsd:element name="identificativoIntermediarioPA" type="common:stText35"/>
+            <xsd:element name="identificativoStazioneIntermediarioPA" type="common:stText35"/>
+            <xsd:element name="password" type="tns:stPassword"/>
+            <xsd:element name="identificativoDominio" type="common:stText35"/>
+            <xsd:element name="identificativoUnivocoVersamento" type="common:stText35"/>
+            <xsd:element name="codiceContestoPagamento" type="common:stText35"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="nodoChiediCopiaRTRisposta">
+        <xsd:complexContent>
+            <xsd:extension base="common:ctRisposta">
+                <xsd:sequence>
+                    <xsd:element name="tipoFirma" type="xsd:string" minOccurs="0"/>
+                    <xsd:element name="rt" type="xsd:base64Binary" minOccurs="0"
+                                 xmime:expectedContentTypes="application/octet-stream"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="nodoInviaRichiestaStorno">
+        <xsd:sequence>
+            <xsd:element name="identificativoIntermediarioPA" type="common:stText35"/>
+            <xsd:element name="identificativoStazioneIntermediarioPA" type="common:stText35"/>
+            <xsd:element name="password" type="tns:stPassword"/>
+            <xsd:element name="identificativoDominio" type="common:stText35"/>
+            <xsd:element name="identificativoUnivocoVersamento" type="common:stText35"/>
+            <xsd:element name="codiceContestoPagamento" type="common:stText35"/>
+            <xsd:element name="rr" type="xsd:base64Binary"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="nodoInviaRichiestaStornoRisposta">
+        <xsd:complexContent>
+            <xsd:extension base="common:ctRisposta">
+                <xsd:sequence>
+                    <xsd:element name="esito" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="nodoInviaRispostaRevoca">
+        <xsd:sequence>
+            <xsd:element name="identificativoIntermediarioPA" type="common:stText35"/>
+            <xsd:element name="identificativoStazioneIntermediarioPA" type="common:stText35"/>
+            <xsd:element name="password" type="tns:stPassword"/>
+            <xsd:element name="identificativoDominio" type="common:stText35"/>
+            <xsd:element name="identificativoUnivocoVersamento" type="common:stText35"/>
+            <xsd:element name="codiceContestoPagamento" type="common:stText35"/>
+            <xsd:element name="er" type="xsd:base64Binary"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="nodoInviaRispostaRevocaRisposta">
+        <xsd:complexContent>
+            <xsd:extension base="common:ctRisposta">
+                <xsd:sequence>
+                    <xsd:element name="esito" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="nodoInviaRPT">
+        <xsd:sequence>
+            <xsd:element name="password" type="tns:stPassword"/>
+            <xsd:element name="identificativoPSP" type="common:stText35"/>
+            <xsd:element name="identificativoIntermediarioPSP" type="common:stText35"/>
+            <xsd:element name="identificativoCanale" type="common:stText35"/>
+            <xsd:element name="tipoFirma" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="rpt" type="xsd:base64Binary"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="nodoInviaRPTRisposta">
+        <xsd:complexContent>
+            <xsd:extension base="common:ctRisposta">
+                <xsd:sequence>
+                    <xsd:element name="esito" type="xsd:string"/>
+                    <xsd:element name="redirect" type="xsd:int" default="0" minOccurs="0"/>
+                    <xsd:element name="url" type="xsd:string" default="" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="nodoInviaCarrelloRPT">
+        <xsd:sequence>
+            <xsd:element name="password" type="tns:stPassword"/>
+            <xsd:element name="identificativoPSP" type="common:stText35"/>
+            <xsd:element name="identificativoIntermediarioPSP" type="common:stText35"/>
+            <xsd:element name="identificativoCanale" type="common:stText35"/>
+            <xsd:element name="listaRPT" type="tns:tipoListaRPT"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="tipoListaRPT">
+        <xsd:sequence>
+            <xsd:element name="elementoListaRPT" type="tns:tipoElementoListaRPT" maxOccurs="5"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="tipoElementoListaRPT">
+        <xsd:sequence>
+            <xsd:element name="identificativoDominio" type="common:stText35"/>
+            <xsd:element name="identificativoUnivocoVersamento" type="common:stText35"/>
+            <xsd:element name="codiceContestoPagamento" type="common:stText35"/>
+            <xsd:element name="tipoFirma" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="rpt" type="xsd:base64Binary"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="nodoInviaCarrelloRPTRisposta">
+        <xsd:complexContent>
+            <xsd:extension base="common:ctRisposta">
+                <xsd:sequence>
+                    <xsd:element name="esitoComplessivoOperazione" type="xsd:string"/>
+                    <xsd:element name="url" type="xsd:string" default="" minOccurs="0"/>
+                    <xsd:element name="listaErroriRPT" type="tns:listaErroriRPT" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="listaErroriRPT">
+        <xsd:sequence>
+            <xsd:element name="fault" type="common:ctFaultBean" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="nodoChiediListaPendentiRPT">
+        <xsd:sequence>
+            <xsd:element name="identificativoIntermediarioPA" type="common:stText35"/>
+            <xsd:element name="identificativoStazioneIntermediarioPA" type="common:stText35"/>
+            <xsd:element name="password" type="tns:stPassword"/>
+            <xsd:element name="identificativoDominio" type="common:stText35"/>
+            <xsd:element name="rangeDa" type="xsd:dateTime" minOccurs="0"/>
+            <xsd:element name="rangeA" type="xsd:dateTime" minOccurs="0"/>
+            <xsd:element name="dimensioneLista" type="xsd:positiveInteger"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="nodoChiediListaPendentiRPTRisposta">
+        <xsd:complexContent>
+            <xsd:extension base="common:ctRisposta">
+                <xsd:sequence>
+                    <xsd:element name="listaRPTPendenti" type="tns:tipoListaRPTPendenti" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="tipoListaRPTPendenti">
+        <xsd:sequence>
+            <xsd:element name="totRestituiti" type="xsd:int"/>
+            <xsd:element name="rptPendente" type="tns:tipoRPTPendente" nillable="true" minOccurs="0"
+                         maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="tipoRPTPendente">
+        <xsd:sequence>
+            <xsd:element name="identificativoDominio" type="common:stText35"/>
+            <xsd:element name="identificativoUnivocoVersamento" type="common:stText35"/>
+            <xsd:element name="codiceContestoPagamento" type="common:stText35"/>
+            <xsd:element name="stato" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="nodoChiediInformativaPSP">
+        <xsd:sequence>
+            <xsd:element name="identificativoIntermediarioPA" type="common:stText35"/>
+            <xsd:element name="identificativoStazioneIntermediarioPA" type="common:stText35"/>
+            <xsd:element name="password" type="tns:stPassword"/>
+            <xsd:element name="identificativoDominio" type="common:stText35"/>
+            <xsd:element name="identificativoPSP" type="common:stText35" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="nodoChiediInformativaPSPRisposta">
+        <xsd:complexContent>
+            <xsd:extension base="common:ctRisposta">
+                <xsd:sequence>
+                    <xsd:element name="xmlInformativa" type="xsd:base64Binary" minOccurs="0"
+                                 xmime:expectedContentTypes="application/octet-stream"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="nodoPAChiediInformativaPA">
+        <xsd:sequence>
+            <xsd:element name="identificativoIntermediarioPA" type="common:stText35"/>
+            <xsd:element name="identificativoStazioneIntermediarioPA" type="common:stText35"/>
+            <xsd:element name="password" type="tns:stPassword"/>
+            <xsd:element name="identificativoDominio" type="common:stText35"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="nodoPAChiediInformativaPARisposta">
+        <xsd:complexContent>
+            <xsd:extension base="common:ctRisposta">
+                <xsd:sequence>
+                    <xsd:element name="xmlInformativa" type="xsd:base64Binary" minOccurs="0"
+                                 xmime:expectedContentTypes="application/octet-stream"
+                                 xmlns:xmime="http://www.w3.org/2005/05/xmlmime"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="nodoChiediElencoQuadraturePA">
+        <xsd:sequence>
+            <xsd:element name="identificativoIntermediarioPA" type="common:stText35"/>
+            <xsd:element name="identificativoStazioneIntermediarioPA" type="common:stText35"/>
+            <xsd:element name="password" type="tns:stPassword"/>
+            <xsd:element name="identificativoDominio" type="common:stText35"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="nodoChiediElencoQuadraturePARisposta">
+        <xsd:complexContent>
+            <xsd:extension base="common:ctRisposta">
+                <xsd:sequence>
+                    <xsd:element name="listaQuadrature" type="tns:tipoListaQuadrature" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="tipoListaQuadrature">
+        <xsd:sequence>
+            <xsd:element name="totRestituiti" type="xsd:int"/>
+            <xsd:element name="idQuadratura" type="tns:tipoIdQuadratura" nillable="true" minOccurs="0"
+                         maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="tipoIdQuadratura">
+        <xsd:sequence>
+            <xsd:element name="identificativoFlusso" type="xsd:string"/>
+            <xsd:element name="dataOraFlusso" type="xsd:dateTime"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="nodoChiediQuadraturaPA">
+        <xsd:sequence>
+            <xsd:element name="identificativoIntermediarioPA" type="common:stText35"/>
+            <xsd:element name="identificativoStazioneIntermediarioPA" type="common:stText35"/>
+            <xsd:element name="password" type="tns:stPassword"/>
+            <xsd:element name="identificativoDominio" type="common:stText35"/>
+            <xsd:element name="identificativoFlusso" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="nodoChiediQuadraturaPARisposta">
+        <xsd:complexContent>
+            <xsd:extension base="common:ctRisposta">
+                <xsd:sequence>
+                    <xsd:element name="xmlQuadratura" type="xsd:base64Binary" minOccurs="0"
+                                 xmime:expectedContentTypes="application/octet-stream"
+                                 xmlns:xmime="http://www.w3.org/2005/05/xmlmime"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="nodoChiediElencoFlussiRendicontazione">
+        <xsd:sequence>
+            <xsd:element name="identificativoIntermediarioPA" type="common:stText35"/>
+            <xsd:element name="identificativoStazioneIntermediarioPA" type="common:stText35"/>
+            <xsd:element name="password" type="tns:stPassword"/>
+            <xsd:element name="identificativoDominio" type="common:stText35"/>
+            <xsd:element name="identificativoPSP" type="common:stText35" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="nodoChiediElencoFlussiRendicontazioneRisposta">
+        <xsd:complexContent>
+            <xsd:extension base="common:ctRisposta">
+                <xsd:sequence>
+                    <xsd:element name="elencoFlussiRendicontazione" type="tns:tipoElencoFlussiRendicontazione"
+                                 minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="tipoElencoFlussiRendicontazione">
+        <xsd:sequence>
+            <xsd:element name="totRestituiti" type="xsd:int"/>
+            <xsd:element name="idRendicontazione" type="tns:tipoIdRendicontazione" nillable="true" minOccurs="0"
+                         maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="tipoIdRendicontazione">
+        <xsd:sequence>
+            <xsd:element name="identificativoFlusso" type="xsd:string"/>
+            <xsd:element name="dataOraFlusso" type="xsd:dateTime"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="nodoChiediFlussoRendicontazione">
+        <xsd:sequence>
+            <xsd:element name="identificativoIntermediarioPA" type="common:stText35"/>
+            <xsd:element name="identificativoStazioneIntermediarioPA" type="common:stText35"/>
+            <xsd:element name="password" type="tns:stPassword"/>
+            <xsd:element name="identificativoDominio" type="common:stText35"/>
+            <xsd:element name="identificativoPSP" type="common:stText35" minOccurs="0"/>
+            <xsd:element name="identificativoFlusso" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="nodoChiediFlussoRendicontazioneRisposta">
+        <xsd:complexContent>
+            <xsd:extension base="common:ctRisposta">
+                <xsd:sequence>
+                    <xsd:element name="xmlRendicontazione" type="xsd:base64Binary" minOccurs="0"
+                                 xmime:expectedContentTypes="application/octet-stream"
+                                 xmlns:xmime="http://www.w3.org/2005/05/xmlmime"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="nodoChiediSceltaWISP">
+        <xsd:sequence>
+            <xsd:element name="identificativoIntermediarioPA" type="common:stText35"/>
+            <xsd:element name="identificativoStazioneIntermediarioPA" type="common:stText35"/>
+            <xsd:element name="password" type="tns:stPassword"/>
+            <xsd:element name="identificativoDominio" type="common:stText35"/>
+            <xsd:element name="keyPA" type="common:stText40"/>
+            <xsd:element name="keyWISP" type="common:stText40"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="nodoChiediSceltaWISPRisposta">
+        <xsd:complexContent>
+            <xsd:extension base="common:ctRisposta">
+                <xsd:sequence>
+                    <xsd:element name="effettuazioneScelta" type="tns:stEffettuazioneScelta" minOccurs="0"/>
+                    <xsd:element name="identificativoPSP" type="common:stText35" minOccurs="0"/>
+                    <xsd:element name="identificativoIntermediarioPSP" type="common:stText35" minOccurs="0"/>
+                    <xsd:element name="identificativoCanale" type="common:stText35" minOccurs="0"/>
+                    <xsd:element name="tipoVersamento" type="common:stTipoVersamento" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+</xsd:schema>

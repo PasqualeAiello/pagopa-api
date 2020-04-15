@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://pagopa-api.pagopa.gov.it/general/xsd/TabellaDelleContropartiEstesa.xsd"
+           xmlns:common="http://pagopa-api.pagopa.gov.it/common/xsd/common.xsd"
+           targetNamespace="http://pagopa-api.pagopa.gov.it/general/xsd/TabellaDelleContropartiEstesa.xsd">
+
+    <xsd:import schemaLocation="../../common/xsd/common.xsd" namespace="http://pagopa-api.pagopa.gov.it/common/xsd/common.xsd"/>
+
+    <xsd:element name="listaInformativeControparte" type="tns:ctListaInformativeControparte"/>
+    <xsd:element name="informativaControparte" type="tns:ctInformativaControparte"/>
+
+    <xsd:simpleType name="stIdServizio">
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="[0-9]{5}" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+    <xsd:simpleType name="stSellerBankIdentifier">
+        <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"/>
+            <xsd:maxLength value="50"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+
+
+    <xsd:simpleType name="stCF">
+        <xsd:restriction base="xsd:string">
+            <xsd:length value="11"/>
+            <xsd:pattern value="[0-9]{11}"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    
+    <xsd:simpleType name="stIdNegozio">
+        <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"/>
+            <xsd:maxLength value="15"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="stTipoPeriodo">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="giornaliera"/>
+            <xsd:enumeration value="settimanale"/>
+            <xsd:enumeration value="mensile"/>
+            <xsd:enumeration value="annuale"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    
+    <xsd:simpleType name="stPagamentiPressoPSP">
+        <xsd:restriction base="xsd:int">
+            <xsd:enumeration value="0"/> <!-- la PA NON consente i pagamenti c/o PSP -->
+            <xsd:enumeration value="1"/> <!-- la PA PSP CONSENTE i pagamenti c/o PSP  -->
+        </xsd:restriction>
+    </xsd:simpleType>
+	
+	<xsd:simpleType name="ctAvvisaturaPull">
+        <xsd:restriction base="xsd:int">
+            <xsd:enumeration value="0"/> <!-- la PA NON consente avvisatura pull -->
+            <xsd:enumeration value="1"/> <!-- la PA CONSENTE consente avvisatura pull  -->
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:complexType name="ctListaInformativeControparte">
+        <xsd:sequence>
+            <xsd:element name="informativaControparte" type="tns:ctInformativaControparte" maxOccurs="unbounded" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="ctInformativaControparte">
+        <xsd:sequence>
+            <xsd:element type="common:stText35" name="identificativoDominio"/>
+            <xsd:element type="common:stText70" name="ragioneSociale"/>
+            <xsd:element type="xsd:dateTime" name="dataInizioValidita"/>
+            <xsd:element type="tns:stPagamentiPressoPSP" name="pagamentiPressoPSP"/>
+			<xsd:element type="common:stText255" name="contactCenterEnteCreditore"/>
+            <xsd:element type="tns:ctModelloTreSpontaneo" name="modelloTreSpontaneo" minOccurs="0" />
+			<xsd:element type="tns:ctAvvisaturaPull" name="avvisaturaPull" minOccurs="0" />
+			<xsd:element type="tns:ctErogazioneServizio" name="erogazioneServizio" minOccurs="0" />
+			<xsd:element type="tns:ctContoAccredito" name="informativaContoAccredito" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+
+    </xsd:complexType>
+
+    <xsd:complexType name="ctFasciaOraria">
+        <xsd:sequence>
+            <xsd:element type="xsd:time" name="fasciaOrariaDa" minOccurs="0"/>
+            <xsd:element type="xsd:time" name="fasciaOrariaA" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="ctServiziModelloTreSpontaneo">
+        <xsd:sequence>
+            <xsd:element name="idServizio" type="tns:stIdServizio" />
+            <xsd:element type="xsd:dateTime" name="dataInizioValidita" />
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="ctModelloTreSpontaneo">
+        <xsd:sequence>
+             <xsd:element type="tns:ctServiziModelloTreSpontaneo" name="serviziModelloTreSpontaneo" maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="ctErogazioneServizio">
+        <xsd:sequence>
+            <xsd:element type="tns:ctErogazione" name="disponibilita" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element type="tns:ctErogazione" name="indisponibilita" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="ctErogazione">
+        <xsd:sequence>
+            <xsd:element name="tipoPeriodo" type="tns:stTipoPeriodo" minOccurs="0"/>
+            <xsd:element name="giorno" type="common:stText35" minOccurs="0"/>
+            <xsd:element name="fasciaOraria" type="tns:ctFasciaOraria" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="ctContoAccredito">
+        <xsd:sequence>
+            <xsd:element type="xsd:dateTime" name="dataAttivazioneIban"/>
+            <xsd:element type="common:stIBANIdentifier" name="ibanAccredito" />
+            <xsd:element type="tns:stSellerBankIdentifier" name="sellerBank" minOccurs="0"/>
+            <xsd:element type="tns:stIdNegozio" name="idNegozio" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+</xsd:schema>
