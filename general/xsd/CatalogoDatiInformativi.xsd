@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema elementFormDefault="qualified"
-            xmlns:common="http://pagopa-api.pagopa.gov.it/common/xsd/common.xsd"
+<xsd:schema xmlns:common="http://pagopa-api.pagopa.gov.it/common/xsd/common.xsd"
             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-            xmlns:tns="http://pagopa-api.pagopa.gov.it/general/xsd/CatalogoDatiInformativi.xsd"
-            targetNamespace="http://pagopa-api.pagopa.gov.it/general/xsd/CatalogoDatiInformativi.xsd">
+            xmlns:tns="http://pagopa-api.pagopa.gov.it/general/xsd/catalogoDatiInformativi.xsd"
+            targetNamespace="http://pagopa-api.pagopa.gov.it/general/xsd/catalogoDatiInformativi.xsd">
 
     <xsd:import schemaLocation="../../common/xsd/common.xsd" namespace="http://pagopa-api.pagopa.gov.it/common/xsd/common.xsd"/>
 
@@ -83,11 +82,6 @@
         </xsd:restriction>
     </xsd:simpleType>
 
-    <xsd:simpleType name="stDateTimeGiornoOra">
-        <xsd:restriction base="xsd:dateTime">
-            <xsd:pattern value="\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d"/>
-        </xsd:restriction>
-    </xsd:simpleType>
 
     <xsd:complexType name="ctIdentificazioneServizio">
         <xsd:sequence>
@@ -141,8 +135,8 @@
 
     <xsd:complexType name="ctInformativaMaster">
         <xsd:sequence>
-            <xsd:element type="tns:stDateTimeGiornoOra" name="dataPubblicazione"/>
-            <xsd:element type="tns:stDateTimeGiornoOra" name="dataInizioValidita"/>
+            <xsd:element type="common:stDateTimeGiornoOra" name="dataPubblicazione"/>
+            <xsd:element type="common:stDateTimeGiornoOra" name="dataInizioValidita"/>
             <xsd:element type="tns:stUrlInformazioni" name="urlInformazioniPSP"/>
             <xsd:element type="common:stZeroUno" name="stornoPagamento"/>
             <xsd:element type="common:stZeroUno" name="marcaBolloDigitale"/>

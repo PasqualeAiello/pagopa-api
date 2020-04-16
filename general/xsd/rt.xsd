@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:common="http://pagopa-api.pagopa.gov.it/common/xsd/common.xsd"
+            xmlns:tns="http://pagopa-api.pagopa.gov.it/general/xsd/rt.xsd"
+            targetNamespace="http://pagopa-api.pagopa.gov.it/general/xsd/rt.xsd">
+
+    <xsd:import schemaLocation="../../common/xsd/common.xsd" namespace="http://pagopa-api.pagopa.gov.it/common/xsd/common.xsd"/>
+
+    <xsd:complexType name="ctRicevutaTelematica">
+        <xsd:sequence>
+            <xsd:element name="versioneOggetto" type="common:stText16">
+                <xsd:annotation>
+                    <xsd:documentation>Riporta la stessa informazione presente nel dato "versioneOggetto" della
+                        Richiesta di Pagamento Telematico (RPT).
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="dominio" type="common:ctDominio">
+                <xsd:annotation>
+                    <xsd:documentation>Riporta le stesse informazioni presenti nel blocco "Dominio" della Richiesta di
+                        Pagamento Telematico (RPT)
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="identificativoMessaggioRicevuta" type="common:stText35">
+                <xsd:annotation>
+                    <xsd:documentation>Identificativo legato alla trasmissione della quietanza telematica.
+                    </xsd:documentation>
+                    <xsd:documentation>Deve essere univoco nell’ambito della stessa data riferita all’elemento
+                        dataMessaggioRicevuta.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="dataOraMessaggioRicevuta" type="common:stISODateTime">
+                <xsd:annotation>
+                    <xsd:documentation>Indica la data del messaggio di quietanza, secondo il formato ISO 8601
+                    </xsd:documentation>
+                    <xsd:documentation>[YYYY]-[MM]-[DD]T[hh]:[mm]:[ss]</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="riferimentoMessaggioRichiesta" type="common:stText35">
+                <xsd:annotation>
+                    <xsd:documentation>Con riferimento al messaggio di Ricevuta Telematica (RT) l’elemento contiene il
+                        dato identificativoMessaggioRichiesta legato alla trasmissione della Richiesta di Pagamento
+                        Telematico (RPT).
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="riferimentoDataRichiesta" type="common:stISODate">
+                <xsd:annotation>
+                    <xsd:documentation>Indica la data secondo il formato ISO 8601 [YYYY]-[MM]-[DD] cui si riferisce la
+                        generazione del dato riferimentoMessaggioRichiesta.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="istitutoAttestante" type="common:ctIstitutoAttestante">
+                <xsd:annotation>
+                    <xsd:documentation>Aggregazione relativa al soggetto Prestatore dei servizi di Pagamento che emette
+                        il documento di attestazione dell’avvenuto versamento.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="enteBeneficiario" type="common:ctEnteBeneficiario">
+                <xsd:annotation>
+                    <xsd:documentation>Riporta le stesse informazioni presenti nel blocco "Ente Beneficiario" della
+                        Richiesta di Pagamento Telematico (RPT) cui si riferisce il messaggio di Ricevuta Telematica.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="soggettoVersante" type="common:ctSoggettoVersante" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Riporta le stesse informazioni presenti nel blocco "Soggetto Versante" della
+                        Richiesta di Pagamento Telematico (RPT) cui si riferisce il messaggio di Ricevuta Telematica.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="soggettoPagatore" type="common:ctSoggettoPagatore">
+                <xsd:annotation>
+                    <xsd:documentation>Riporta le stesse informazioni presenti nel blocco "Soggetto Pagatore" della
+                        Richiesta di Pagamento Telematico (RPT) cui si riferisce il messaggio di Ricevuta Telematica.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="datiPagamento" type="common:ctDatiVersamentoRT">
+                <xsd:annotation>
+                    <xsd:documentation>Aggregazione "dati del versamento"</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="RT" type="tns:ctRicevutaTelematica">
+        <xsd:annotation>
+            <xsd:documentation>Ricevuta Telematica (RT)</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+</xsd:schema>

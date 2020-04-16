@@ -15,7 +15,7 @@
 
     <wsdl:message name="paaChiediNumeroAvviso">
         <wsdl:part name="bodyrichiesta" element="papnra:paaChiediNumeroAvviso"/>
-        <wsdl:part name="header" element="papnra:paPerNodoRichiestaAvvisiHeader"/>
+        <wsdl:part name="header" element="papnra:paaPerNodoRichiestaAvvisiHeader"/>
     </wsdl:message>
     <wsdl:message name="paaChiediNumeroAvvisoRisposta">
         <wsdl:part name="bodyrisposta" element="papnra:paaChiediNumeroAvvisoRisposta"/>

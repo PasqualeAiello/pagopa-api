@@ -1,75 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             xmlns:common="http://pagopa-api.pagopa.gov.it/common/xsd/common.xsd"
-            xmlns:rptrt="http://pagopa-api.pagopa.gov.it/common/xsd/rpt-rt.xsd"
             xmlns:tns="http://pagopa-api.pagopa.gov.it/nodo/xsd/nodoPerPspRichiestaAvvisi.xsd"
-            elementFormDefault="qualified"
             targetNamespace="http://pagopa-api.pagopa.gov.it/nodo/xsd/nodoPerPspRichiestaAvvisi.xsd">
 
-
     <xsd:import schemaLocation="../../common/xsd/common.xsd" namespace="http://pagopa-api.pagopa.gov.it/common/xsd/common.xsd"/>
-    <xsd:import schemaLocation="../../common/xsd/rpt-rt.xsd" namespace="http://pagopa-api.pagopa.gov.it/common/xsd/rpt-rt.xsd"/>
-
-
-    <xsd:simpleType name="stApplicationCode">
-        <xsd:restriction base="xsd:string">
-            <xsd:pattern value="[0-9]{2}"/>
-        </xsd:restriction>
-    </xsd:simpleType>
-
-    <!-- complex types -->
-    <xsd:complexType name="ctNumeroAvviso">
-        <xsd:sequence>
-            <xsd:element type="common:stAuxDigit" name="auxDigit"/>
-            <xsd:element type="tns:stApplicationCode" name="applicationCode" minOccurs="0"/>
-            <xsd:element type="common:stCodIUV" name="IUV"/>
-        </xsd:sequence>
-    </xsd:complexType>
-
-    <xsd:complexType name="ctSpezzoniCausaleVersamento">
-        <xsd:sequence maxOccurs="6">
-            <xsd:choice>
-                <xsd:element type="common:stText35" name="spezzoneCausaleVersamento"/>
-                <xsd:element type="tns:ctSpezzoneStrutturatoCausaleVersamento"
-                             name="spezzoneStrutturatoCausaleVersamento"/>
-            </xsd:choice>
-        </xsd:sequence>
-    </xsd:complexType>
-
-    <xsd:complexType name="ctSpezzoneStrutturatoCausaleVersamento">
-        <xsd:sequence>
-            <xsd:element type="common:stText25" name="causaleSpezzone"/>
-            <xsd:element type="common:stImporto" name="importoSpezzone"/>
-        </xsd:sequence>
-    </xsd:complexType>
-
-    <xsd:complexType name="ctDatiPagamentoPA">
-        <xsd:sequence>
-            <xsd:element name="importoSingoloVersamento" type="common:stImporto"/>
-            <xsd:element name="ibanAccredito" type="common:stIBANIdentifier"/>
-            <xsd:element name="bicAccredito" type="common:stBICIdentifier" minOccurs="0"/>
-            <xsd:element name="enteBeneficiario" type="rptrt:ctEnteBeneficiario" minOccurs="0"/>
-            <xsd:element name="credenzialiPagatore" type="common:stText35" minOccurs="0"/>
-            <xsd:choice>
-                <xsd:element name="causaleVersamento" type="common:stCausaleVersamento"/>
-                <xsd:element name="spezzoniCausaleVersamento" type="tns:ctSpezzoniCausaleVersamento"/>
-            </xsd:choice>
-        </xsd:sequence>
-    </xsd:complexType>
-
-
-    <xsd:complexType name="ctEsitoChiediNumeroAvviso">
-        <xsd:complexContent>
-            <xsd:extension base="common:ctRisposta">
-                <xsd:sequence>
-                    <xsd:element name="esito" type="xsd:string"/>
-                    <xsd:element name="identificativoDominio" type="common:stText35" minOccurs="0"/>
-                    <xsd:element name="numeroAvviso" type="tns:ctNumeroAvviso" minOccurs="0"/>
-                    <xsd:element name="datiPagamentoPA" type="tns:ctDatiPagamentoPA" minOccurs="0"/>
-                </xsd:sequence>
-            </xsd:extension>
-        </xsd:complexContent>
-    </xsd:complexType>
 
     <xsd:complexType name="nodoChiediNumeroAvviso">
         <xsd:sequence>
@@ -85,7 +20,7 @@
 
     <xsd:complexType name="nodoChiediNumeroAvvisoRisposta">
         <xsd:sequence>
-            <xsd:element name="nodoChiediNumeroAvvisoRisposta" type="tns:ctEsitoChiediNumeroAvviso"/>
+            <xsd:element name="nodoChiediNumeroAvvisoRisposta" type="common:ctEsitoChiediNumeroAvviso"/>
         </xsd:sequence>
     </xsd:complexType>
 
@@ -121,6 +56,5 @@
 
     <xsd:element name="nodoChiediCatalogoServizi" type="tns:nodoChiediCatalogoServizi"/>
     <xsd:element name="nodoChiediCatalogoServiziRisposta" type="tns:nodoChiediCatalogoServiziRisposta"/>
-
 
 </xsd:schema>

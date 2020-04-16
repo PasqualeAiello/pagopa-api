@@ -2,12 +2,11 @@
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             xmlns:common="http://pagopa-api.pagopa.gov.it/common/xsd/common.xsd"
             xmlns:tns="http://pagopa-api.pagopa.gov.it/ec/xsd/paPerNodo.xsd"
-            elementFormDefault="qualified"
             targetNamespace="http://pagopa-api.pagopa.gov.it/ec/xsd/paPerNodo.xsd">
 
     <xsd:import schemaLocation="../../common/xsd/common.xsd" namespace="http://pagopa-api.pagopa.gov.it/common/xsd/common.xsd"/>
     
-    <xsd:element name="paPerNodoHeader" type="common:intestazionePPT"/>
+    <xsd:element name="paaPerNodoHeader" type="common:intestazionePPT"/>
 
     <xsd:element name="paaInviaRT" type="tns:paaInviaRT"/>
     <xsd:element name="paaInviaRTRisposta" type="tns:paaInviaRTRisposta"/>

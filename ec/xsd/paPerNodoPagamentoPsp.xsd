@@ -2,15 +2,12 @@
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             xmlns:common="http://pagopa-api.pagopa.gov.it/common/xsd/common.xsd"
             xmlns:tns="http://pagopa-api.pagopa.gov.it/ec/xsd/paPerNodoPagamentoPsp.xsd"
-            xmlns:rptrt="http://pagopa-api.pagopa.gov.it/common/xsd/rpt-rt.xsd"
-            elementFormDefault="qualified"
             targetNamespace="http://pagopa-api.pagopa.gov.it/ec/xsd/paPerNodoPagamentoPsp.xsd">
 
 
     <xsd:import schemaLocation="../../common/xsd/common.xsd" namespace="http://pagopa-api.pagopa.gov.it/common/xsd/common.xsd"/>
-    <xsd:import schemaLocation="../../common/xsd/rpt-rt.xsd" namespace="http://pagopa-api.pagopa.gov.it/common/xsd/rpt-rt.xsd"/>
 
-    <xsd:element name="paPerNodoPagamentoPspHeader" type="common:intestazionePPT"/>
+    <xsd:element name="paaPerNodoPagamentoPspHeader" type="common:intestazionePPT"/>
 
     <xsd:element name="paaVerificaRPT" type="tns:paaVerificaRPT"/>
     <xsd:element name="paaVerificaRPTRisposta" type="tns:paaVerificaRPTRisposta"/>
@@ -25,7 +22,7 @@
             </xsd:element>
             <xsd:element name="bicAccredito" type="common:stBICIdentifier" minOccurs="0">
             </xsd:element>
-            <xsd:element name="enteBeneficiario" type="rptrt:ctEnteBeneficiario" minOccurs="0">
+            <xsd:element name="enteBeneficiario" type="common:ctEnteBeneficiario" minOccurs="0">
             </xsd:element>
             <xsd:element name="credenzialiPagatore" type="common:stText35" minOccurs="0">
             </xsd:element>
@@ -44,13 +41,13 @@
             </xsd:element>
             <xsd:element name="bicAppoggio" type="common:stBICIdentifier" minOccurs="0">
             </xsd:element>
-            <xsd:element name="soggettoVersante" type="rptrt:ctSoggettoVersante" minOccurs="0"/>
+            <xsd:element name="soggettoVersante" type="common:ctSoggettoVersante" minOccurs="0"/>
             <!-- TODO: Da valutare -->
             <xsd:element name="ibanAddebito" type="common:stIBANIdentifier" minOccurs="0">
             </xsd:element>
             <xsd:element name="bicAddebito" type="common:stBICIdentifier" minOccurs="0">
             </xsd:element>
-            <xsd:element name="soggettoPagatore" type="rptrt:ctSoggettoPagatore" minOccurs="0"/>
+            <xsd:element name="soggettoPagatore" type="common:ctSoggettoPagatore" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
 
@@ -66,7 +63,7 @@
     </xsd:complexType>
     <xsd:complexType name="esitoVerificaRPT">
         <xsd:complexContent>
-            <xsd:extension base="tns:risposta">
+            <xsd:extension base="common:ctRisposta">
                 <xsd:sequence>
                     <xsd:element name="esito" type="xsd:string"/>
                     <xsd:element name="datiPagamentoPA" type="tns:paaTipoDatiPagamentoPA" minOccurs="0"/>
@@ -89,7 +86,7 @@
     </xsd:complexType>
     <xsd:complexType name="esitoAttivaRPT">
         <xsd:complexContent>
-            <xsd:extension base="tns:risposta">
+            <xsd:extension base="common:ctRisposta">
                 <xsd:sequence>
                     <xsd:element name="esito" type="xsd:string"/>
                     <xsd:element name="datiPagamentoPA" type="tns:paaTipoDatiPagamentoPA" minOccurs="0"/>
@@ -97,9 +94,5 @@
             </xsd:extension>
         </xsd:complexContent>
     </xsd:complexType>
-    <xsd:complexType name="risposta">
-        <xsd:sequence>
-            <xsd:element name="fault" type="common:ctFaultBean" minOccurs="0"/>
-        </xsd:sequence>
-    </xsd:complexType>
+
 </xsd:schema>

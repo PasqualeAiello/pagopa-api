@@ -1,14 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xsd:schema xmlns:common="http://pagopa-api.pagopa.gov.it/common/xsd/common.xsd"
-            xmlns:rptrt="http://pagopa-api.pagopa.gov.it/common/xsd/rpt-rt.xsd"
 			xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-			xmlns:tns="http://pagopa-api.pagopa.gov.it/general/xsd/FlussoRiversamento.xsd"
-            targetNamespace="http://pagopa-api.pagopa.gov.it/general/xsd/FlussoRiversamento.xsd"
-			elementFormDefault="qualified">
+			xmlns:tns="http://pagopa-api.pagopa.gov.it/general/xsd/flussoRiversamento.xsd"
+            targetNamespace="http://pagopa-api.pagopa.gov.it/general/xsd/flussoRiversamento.xsd">
 
     <xsd:import schemaLocation="../../common/xsd/common.xsd" namespace="http://pagopa-api.pagopa.gov.it/common/xsd/common.xsd"/>
-    <xsd:import schemaLocation="../../common/xsd/rpt-rt.xsd" namespace="http://pagopa-api.pagopa.gov.it/common/xsd/rpt-rt.xsd"/>
-
 
     <xsd:simpleType name="stVersioneOggetto">
         <xsd:restriction base="xsd:string">
@@ -97,7 +93,7 @@
     <!-- Istituto Mittente-->
     <xsd:complexType name="ctIstitutoMittente">
         <xsd:sequence>
-            <xsd:element name="identificativoUnivocoMittente" type="rptrt:ctIdentificativoUnivoco">
+            <xsd:element name="identificativoUnivocoMittente" type="common:ctIdentificativoUnivoco">
                 <xsd:annotation>
                     <xsd:documentation>Aggregazione che riporta le informazioni concernenti l’identificazione
                         dell’Istituto mittente del flusso.
@@ -116,7 +112,7 @@
 
     <xsd:complexType name="ctIstitutoRicevente">
         <xsd:sequence>
-            <xsd:element name="identificativoUnivocoRicevente" type="rptrt:ctIdentificativoUnivocoPersonaG" >
+            <xsd:element name="identificativoUnivocoRicevente" type="common:ctIdentificativoUnivocoPersonaG" >
                 <xsd:annotation>
                     <xsd:documentation>Aggregazione che riporta le informazioni concernenti l’identificazione fiscale
                         dell’ente creditore che riceve il flusso.

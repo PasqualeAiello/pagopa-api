@@ -16,14 +16,14 @@
     
     <wsdl:message name="paaVerificaRPT">
         <wsdl:part name="bodyrichiesta" element="papnpp:paaVerificaRPT"/>
-        <wsdl:part name="header" element="papnpp:paPerNodoPagamentoPspHeader"/>
+        <wsdl:part name="header" element="papnpp:paaPerNodoPagamentoPspHeader"/>
     </wsdl:message>
     <wsdl:message name="paaVerificaRPTRisposta">
         <wsdl:part name="bodyrisposta" element="papnpp:paaVerificaRPTRisposta"/>
     </wsdl:message>
     <wsdl:message name="paaAttivaRPT">
         <wsdl:part name="bodyrichiesta" element="papnpp:paaAttivaRPT"/>
-        <wsdl:part name="header" element="papnpp:paPerNodoPagamentoPspHeader"/>
+        <wsdl:part name="header" element="papnpp:paaPerNodoPagamentoPspHeader"/>
     </wsdl:message>
     <wsdl:message name="paaAttivaRPTRisposta">
         <wsdl:part name="bodyrisposta" element="papnpp:paaAttivaRPTRisposta"/>

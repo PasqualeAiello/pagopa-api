@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema elementFormDefault="qualified"
-            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             xmlns:common="http://pagopa-api.pagopa.gov.it/common/xsd/common.xsd"
-            xmlns:rptrt="http://pagopa-api.pagopa.gov.it/common/xsd/rpt-rt.xsd"
-            xmlns:tns="http://pagopa-api.pagopa.gov.it/general/xsd/avvisi-digitali.xsd"
-            targetNamespace="http://pagopa-api.pagopa.gov.it/general/xsd/avvisi-digitali.xsd">
+            xmlns:tns="http://pagopa-api.pagopa.gov.it/general/xsd/avvisiDigitali.xsd"
+            targetNamespace="http://pagopa-api.pagopa.gov.it/general/xsd/avvisiDigitali.xsd">
 
     <xsd:import schemaLocation="../../common/xsd/common.xsd" namespace="http://pagopa-api.pagopa.gov.it/common/xsd/common.xsd"/>
-    <xsd:import schemaLocation="../../common/xsd/rpt-rt.xsd" namespace="http://pagopa-api.pagopa.gov.it/common/xsd/rpt-rt.xsd"/>
 
     <xsd:simpleType name="stTassonomiaAvviso">
         <xsd:restriction base="xsd:string">
@@ -36,7 +33,7 @@
             <xsd:element name="identificativoMessaggioRichiesta" type="common:stIdentificativoMessaggioRichiesta"/>
             <xsd:element name="tassonomiaAvviso" type="tns:stTassonomiaAvviso"/>
             <xsd:element name="codiceAvviso" type="common:stCodiceAvviso"/>
-            <xsd:element name="soggettoPagatore" type="rptrt:ctSoggettoPagatore"/>
+            <xsd:element name="soggettoPagatore" type="common:ctSoggettoPagatore"/>
             <xsd:element name="dataScadenzaPagamento" type="common:stISODate"/>
             <xsd:element name="dataScadenzaAvviso" type="common:stISODate"/>
             <xsd:element name="importoAvviso" type="common:stImporto"/>

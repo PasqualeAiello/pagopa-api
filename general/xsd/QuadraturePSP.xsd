@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema elementFormDefault="qualified"
-            xmlns:common="http://pagopa-api.pagopa.gov.it/common/xsd/common.xsd"
-           xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-           xmlns:tns="http://pagopa-api.pagopa.gov.it/general/xsd/QuadraturePSP.xsd"
-           targetNamespace="http://pagopa-api.pagopa.gov.it/general/xsd/QuadraturePSP.xsd">
+<xsd:schema xmlns:common="http://pagopa-api.pagopa.gov.it/common/xsd/common.xsd"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:tns="http://pagopa-api.pagopa.gov.it/general/xsd/quadraturePSP.xsd"
+            targetNamespace="http://pagopa-api.pagopa.gov.it/general/xsd/quadraturePSP.xsd">
 
     <xsd:import schemaLocation="../../common/xsd/common.xsd" namespace="http://pagopa-api.pagopa.gov.it/common/xsd/common.xsd"/>
 

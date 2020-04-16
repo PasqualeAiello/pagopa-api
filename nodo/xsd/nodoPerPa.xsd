@@ -3,22 +3,11 @@
             xmlns:common="http://pagopa-api.pagopa.gov.it/common/xsd/common.xsd"
             xmlns:tns="http://pagopa-api.pagopa.gov.it/nodo/xsd/nodoPerPa.xsd"
             xmlns:xmime="http://www.w3.org/2005/05/xmlmime"
-            elementFormDefault="qualified"
             targetNamespace="http://pagopa-api.pagopa.gov.it/nodo/xsd/nodoPerPa.xsd">
 
     <xsd:import schemaLocation="../../common/xsd/common.xsd" namespace="http://pagopa-api.pagopa.gov.it/common/xsd/common.xsd"/>
 
-    <xsd:element name="nodoPerPaHeader">
-        <xsd:complexType>
-            <xsd:sequence>
-                <xsd:element name="identificativoIntermediarioPA" type="common:stText35"/>
-                <xsd:element name="identificativoStazioneIntermediarioPA" type="common:stText35"/>
-                <xsd:element name="identificativoDominio" type="common:stText35"/>
-                <xsd:element name="identificativoUnivocoVersamento" type="common:stText35"/>
-                <xsd:element name="codiceContestoPagamento" type="common:stText35"/>
-            </xsd:sequence>
-        </xsd:complexType>
-    </xsd:element>
+    <xsd:element name="nodoPerPaHeader" type="common:intestazionePPT"/>
 
     <xsd:element name="nodoPerPaCarrelloHeader">
         <xsd:complexType>
@@ -29,21 +18,6 @@
             </xsd:sequence>
         </xsd:complexType>
     </xsd:element>
-
-
-    <xsd:simpleType name="stPassword">
-        <xsd:restriction base="xsd:string">
-            <xsd:minLength value="8"/>
-            <xsd:maxLength value="15"/>
-        </xsd:restriction>
-    </xsd:simpleType>
-    <xsd:simpleType name="stEffettuazioneScelta">
-        <xsd:restriction base="xsd:string">
-            <xsd:enumeration value="SI"/>
-            <xsd:enumeration value="NO"/>
-            <xsd:enumeration value="PO"/>
-        </xsd:restriction>
-    </xsd:simpleType>
 
     <xsd:element name="nodoChiediCopiaRT" type="tns:nodoChiediCopiaRT"/>
     <xsd:element name="nodoChiediCopiaRTRisposta" type="tns:nodoChiediCopiaRTRisposta"/>
@@ -93,7 +67,7 @@
         <xsd:sequence>
             <xsd:element name="identificativoIntermediarioPA" type="common:stText35"/>
             <xsd:element name="identificativoStazioneIntermediarioPA" type="common:stText35"/>
-            <xsd:element name="password" type="tns:stPassword"/>
+            <xsd:element name="password" type="common:stPassword"/>
             <xsd:element name="identificativoDominio" type="common:stText35"/>
             <xsd:element name="identificativoUnivocoVersamento" type="common:stText35"/>
             <xsd:element name="codiceContestoPagamento" type="common:stText35"/>
@@ -143,7 +117,7 @@
         <xsd:sequence>
             <xsd:element name="identificativoIntermediarioPA" type="common:stText35"/>
             <xsd:element name="identificativoStazioneIntermediarioPA" type="common:stText35"/>
-            <xsd:element name="password" type="tns:stPassword"/>
+            <xsd:element name="password" type="common:stPassword"/>
             <xsd:element name="identificativoDominio" type="common:stText35"/>
             <xsd:element name="identificativoUnivocoVersamento" type="common:stText35"/>
             <xsd:element name="codiceContestoPagamento" type="common:stText35"/>
@@ -166,7 +140,7 @@
         <xsd:sequence>
             <xsd:element name="identificativoIntermediarioPA" type="common:stText35"/>
             <xsd:element name="identificativoStazioneIntermediarioPA" type="common:stText35"/>
-            <xsd:element name="password" type="tns:stPassword"/>
+            <xsd:element name="password" type="common:stPassword"/>
             <xsd:element name="identificativoDominio" type="common:stText35"/>
             <xsd:element name="identificativoUnivocoVersamento" type="common:stText35"/>
             <xsd:element name="codiceContestoPagamento" type="common:stText35"/>
@@ -188,7 +162,7 @@
         <xsd:sequence>
             <xsd:element name="identificativoIntermediarioPA" type="common:stText35"/>
             <xsd:element name="identificativoStazioneIntermediarioPA" type="common:stText35"/>
-            <xsd:element name="password" type="tns:stPassword"/>
+            <xsd:element name="password" type="common:stPassword"/>
             <xsd:element name="identificativoDominio" type="common:stText35"/>
             <xsd:element name="identificativoUnivocoVersamento" type="common:stText35"/>
             <xsd:element name="codiceContestoPagamento" type="common:stText35"/>
@@ -208,7 +182,7 @@
 
     <xsd:complexType name="nodoInviaRPT">
         <xsd:sequence>
-            <xsd:element name="password" type="tns:stPassword"/>
+            <xsd:element name="password" type="common:stPassword"/>
             <xsd:element name="identificativoPSP" type="common:stText35"/>
             <xsd:element name="identificativoIntermediarioPSP" type="common:stText35"/>
             <xsd:element name="identificativoCanale" type="common:stText35"/>
@@ -231,27 +205,11 @@
 
     <xsd:complexType name="nodoInviaCarrelloRPT">
         <xsd:sequence>
-            <xsd:element name="password" type="tns:stPassword"/>
+            <xsd:element name="password" type="common:stPassword"/>
             <xsd:element name="identificativoPSP" type="common:stText35"/>
             <xsd:element name="identificativoIntermediarioPSP" type="common:stText35"/>
             <xsd:element name="identificativoCanale" type="common:stText35"/>
-            <xsd:element name="listaRPT" type="tns:tipoListaRPT"/>
-        </xsd:sequence>
-    </xsd:complexType>
-
-    <xsd:complexType name="tipoListaRPT">
-        <xsd:sequence>
-            <xsd:element name="elementoListaRPT" type="tns:tipoElementoListaRPT" maxOccurs="5"/>
-        </xsd:sequence>
-    </xsd:complexType>
-
-    <xsd:complexType name="tipoElementoListaRPT">
-        <xsd:sequence>
-            <xsd:element name="identificativoDominio" type="common:stText35"/>
-            <xsd:element name="identificativoUnivocoVersamento" type="common:stText35"/>
-            <xsd:element name="codiceContestoPagamento" type="common:stText35"/>
-            <xsd:element name="tipoFirma" type="xsd:string" minOccurs="0"/>
-            <xsd:element name="rpt" type="xsd:base64Binary"/>
+            <xsd:element name="listaRPT" type="common:tipoListaRPT"/>
         </xsd:sequence>
     </xsd:complexType>
 
@@ -261,23 +219,17 @@
                 <xsd:sequence>
                     <xsd:element name="esitoComplessivoOperazione" type="xsd:string"/>
                     <xsd:element name="url" type="xsd:string" default="" minOccurs="0"/>
-                    <xsd:element name="listaErroriRPT" type="tns:listaErroriRPT" minOccurs="0"/>
+                    <xsd:element name="listaErroriRPT" type="common:listaErroriRPT" minOccurs="0"/>
                 </xsd:sequence>
             </xsd:extension>
         </xsd:complexContent>
-    </xsd:complexType>
-
-    <xsd:complexType name="listaErroriRPT">
-        <xsd:sequence>
-            <xsd:element name="fault" type="common:ctFaultBean" minOccurs="0" maxOccurs="unbounded"/>
-        </xsd:sequence>
     </xsd:complexType>
 
     <xsd:complexType name="nodoChiediListaPendentiRPT">
         <xsd:sequence>
             <xsd:element name="identificativoIntermediarioPA" type="common:stText35"/>
             <xsd:element name="identificativoStazioneIntermediarioPA" type="common:stText35"/>
-            <xsd:element name="password" type="tns:stPassword"/>
+            <xsd:element name="password" type="common:stPassword"/>
             <xsd:element name="identificativoDominio" type="common:stText35"/>
             <xsd:element name="rangeDa" type="xsd:dateTime" minOccurs="0"/>
             <xsd:element name="rangeA" type="xsd:dateTime" minOccurs="0"/>
@@ -316,7 +268,7 @@
         <xsd:sequence>
             <xsd:element name="identificativoIntermediarioPA" type="common:stText35"/>
             <xsd:element name="identificativoStazioneIntermediarioPA" type="common:stText35"/>
-            <xsd:element name="password" type="tns:stPassword"/>
+            <xsd:element name="password" type="common:stPassword"/>
             <xsd:element name="identificativoDominio" type="common:stText35"/>
             <xsd:element name="identificativoPSP" type="common:stText35" minOccurs="0"/>
         </xsd:sequence>
@@ -337,7 +289,7 @@
         <xsd:sequence>
             <xsd:element name="identificativoIntermediarioPA" type="common:stText35"/>
             <xsd:element name="identificativoStazioneIntermediarioPA" type="common:stText35"/>
-            <xsd:element name="password" type="tns:stPassword"/>
+            <xsd:element name="password" type="common:stPassword"/>
             <xsd:element name="identificativoDominio" type="common:stText35"/>
         </xsd:sequence>
     </xsd:complexType>
@@ -358,7 +310,7 @@
         <xsd:sequence>
             <xsd:element name="identificativoIntermediarioPA" type="common:stText35"/>
             <xsd:element name="identificativoStazioneIntermediarioPA" type="common:stText35"/>
-            <xsd:element name="password" type="tns:stPassword"/>
+            <xsd:element name="password" type="common:stPassword"/>
             <xsd:element name="identificativoDominio" type="common:stText35"/>
         </xsd:sequence>
     </xsd:complexType>
@@ -367,32 +319,17 @@
         <xsd:complexContent>
             <xsd:extension base="common:ctRisposta">
                 <xsd:sequence>
-                    <xsd:element name="listaQuadrature" type="tns:tipoListaQuadrature" minOccurs="0"/>
+                    <xsd:element name="listaQuadrature" type="common:tipoListaQuadrature" minOccurs="0"/>
                 </xsd:sequence>
             </xsd:extension>
         </xsd:complexContent>
-    </xsd:complexType>
-
-    <xsd:complexType name="tipoListaQuadrature">
-        <xsd:sequence>
-            <xsd:element name="totRestituiti" type="xsd:int"/>
-            <xsd:element name="idQuadratura" type="tns:tipoIdQuadratura" nillable="true" minOccurs="0"
-                         maxOccurs="unbounded"/>
-        </xsd:sequence>
-    </xsd:complexType>
-
-    <xsd:complexType name="tipoIdQuadratura">
-        <xsd:sequence>
-            <xsd:element name="identificativoFlusso" type="xsd:string"/>
-            <xsd:element name="dataOraFlusso" type="xsd:dateTime"/>
-        </xsd:sequence>
     </xsd:complexType>
 
     <xsd:complexType name="nodoChiediQuadraturaPA">
         <xsd:sequence>
             <xsd:element name="identificativoIntermediarioPA" type="common:stText35"/>
             <xsd:element name="identificativoStazioneIntermediarioPA" type="common:stText35"/>
-            <xsd:element name="password" type="tns:stPassword"/>
+            <xsd:element name="password" type="common:stPassword"/>
             <xsd:element name="identificativoDominio" type="common:stText35"/>
             <xsd:element name="identificativoFlusso" type="xsd:string"/>
         </xsd:sequence>
@@ -414,7 +351,7 @@
         <xsd:sequence>
             <xsd:element name="identificativoIntermediarioPA" type="common:stText35"/>
             <xsd:element name="identificativoStazioneIntermediarioPA" type="common:stText35"/>
-            <xsd:element name="password" type="tns:stPassword"/>
+            <xsd:element name="password" type="common:stPassword"/>
             <xsd:element name="identificativoDominio" type="common:stText35"/>
             <xsd:element name="identificativoPSP" type="common:stText35" minOccurs="0"/>
         </xsd:sequence>
@@ -450,7 +387,7 @@
         <xsd:sequence>
             <xsd:element name="identificativoIntermediarioPA" type="common:stText35"/>
             <xsd:element name="identificativoStazioneIntermediarioPA" type="common:stText35"/>
-            <xsd:element name="password" type="tns:stPassword"/>
+            <xsd:element name="password" type="common:stPassword"/>
             <xsd:element name="identificativoDominio" type="common:stText35"/>
             <xsd:element name="identificativoPSP" type="common:stText35" minOccurs="0"/>
             <xsd:element name="identificativoFlusso" type="xsd:string"/>
@@ -473,7 +410,7 @@
         <xsd:sequence>
             <xsd:element name="identificativoIntermediarioPA" type="common:stText35"/>
             <xsd:element name="identificativoStazioneIntermediarioPA" type="common:stText35"/>
-            <xsd:element name="password" type="tns:stPassword"/>
+            <xsd:element name="password" type="common:stPassword"/>
             <xsd:element name="identificativoDominio" type="common:stText35"/>
             <xsd:element name="keyPA" type="common:stText40"/>
             <xsd:element name="keyWISP" type="common:stText40"/>
@@ -484,7 +421,7 @@
         <xsd:complexContent>
             <xsd:extension base="common:ctRisposta">
                 <xsd:sequence>
-                    <xsd:element name="effettuazioneScelta" type="tns:stEffettuazioneScelta" minOccurs="0"/>
+                    <xsd:element name="effettuazioneScelta" type="common:stEffettuazioneScelta" minOccurs="0"/>
                     <xsd:element name="identificativoPSP" type="common:stText35" minOccurs="0"/>
                     <xsd:element name="identificativoIntermediarioPSP" type="common:stText35" minOccurs="0"/>
                     <xsd:element name="identificativoCanale" type="common:stText35" minOccurs="0"/>

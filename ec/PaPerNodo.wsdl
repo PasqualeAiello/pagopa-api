@@ -16,7 +16,7 @@
     
     <wsdl:message name="paaInviaRT">
         <wsdl:part name="bodyrichiesta" element="papn:paaInviaRT"/>
-        <wsdl:part name="header" element="papn:paPerNodoHeader"/>
+        <wsdl:part name="header" element="papn:paaPerNodoHeader"/>
     </wsdl:message>
     <wsdl:message name="paaInviaRTResponse">
         <wsdl:part name="bodyrisposta" element="papn:paaInviaRTRisposta"/>

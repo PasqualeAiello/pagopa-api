@@ -2,14 +2,11 @@
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             xmlns:common="http://pagopa-api.pagopa.gov.it/common/xsd/common.xsd"
             xmlns:tns="http://pagopa-api.pagopa.gov.it/ec/xsd/paPerNodoRichiestaAvvisi.xsd"
-            xmlns:rptrt="http://pagopa-api.pagopa.gov.it/common/xsd/rpt-rt.xsd"
-            elementFormDefault="qualified"
             targetNamespace="http://pagopa-api.pagopa.gov.it/ec/xsd/paPerNodoRichiestaAvvisi.xsd">
 
     <xsd:import schemaLocation="../../common/xsd/common.xsd" namespace="http://pagopa-api.pagopa.gov.it/common/xsd/common.xsd"/>
-    <xsd:import schemaLocation="../../common/xsd/rpt-rt.xsd" namespace="http://pagopa-api.pagopa.gov.it/common/xsd/rpt-rt.xsd"/>
 
-    <xsd:element name="paPerNodoRichiestaAvvisiHeader">
+    <xsd:element name="paaPerNodoRichiestaAvvisiHeader">
         <xsd:complexType>
             <xsd:sequence>
                 <xsd:element name="identificativoIntermediarioPA"
@@ -21,40 +18,6 @@
         </xsd:complexType>
     </xsd:element>
 
-    <xsd:complexType name="ctNumeroAvviso">
-        <xsd:sequence>
-            <xsd:element type="common:stAuxDigit" name="auxDigit"/>
-            <xsd:element type="common:stApplicationCode" name="applicationCode" minOccurs="0"/>
-            <xsd:element type="common:stCodIUV" name="IUV"/>
-        </xsd:sequence>
-    </xsd:complexType>
-
-    <xsd:complexType name="ctDatiPagamentoPA">
-        <xsd:sequence>
-            <xsd:element name="importoSingoloVersamento" type="common:stImporto"/>
-            <xsd:element name="ibanAccredito" type="common:stIBANIdentifier"/>
-            <xsd:element name="bicAccredito" type="common:stBICIdentifier" minOccurs="0"/>
-            <xsd:element name="enteBeneficiario" type="rptrt:ctEnteBeneficiario" minOccurs="0"/>
-            <xsd:element name="credenzialiPagatore" type="common:stText35" minOccurs="0"/>
-            <xsd:choice>
-                <xsd:element name="causaleVersamento" type="common:stCausaleVersamento"/>
-                <xsd:element name="spezzoniCausaleVersamento" type="common:ctSpezzoniCausaleVersamento"/>
-            </xsd:choice>
-        </xsd:sequence>
-    </xsd:complexType>
-
-    <xsd:complexType name="ctEsitoChiediNumeroAvviso">
-        <xsd:complexContent>
-            <xsd:extension base="common:ctRisposta">
-                <xsd:sequence>
-                    <xsd:element name="esito" type="xsd:string"/>
-                    <xsd:element name="numeroAvviso" type="tns:ctNumeroAvviso" minOccurs="0"/>
-                    <xsd:element name="datiPagamentoPA" type="tns:ctDatiPagamentoPA" minOccurs="0"/>
-                </xsd:sequence>
-            </xsd:extension>
-        </xsd:complexContent>
-    </xsd:complexType>
-
     <xsd:complexType name="paaChiediNumeroAvviso">
         <xsd:sequence>
             <xsd:element name="identificativoPSP" type="common:stText35"/>
@@ -64,7 +27,7 @@
 
     <xsd:complexType name="paaChiediNumeroAvvisoRisposta">
         <xsd:sequence>
-            <xsd:element name="paaChiediNumeroAvvisoRisposta" type="tns:ctEsitoChiediNumeroAvviso"/>
+            <xsd:element name="paaChiediNumeroAvvisoRisposta" type="common:ctEsitoChiediNumeroAvviso"/>
         </xsd:sequence>
     </xsd:complexType>
 

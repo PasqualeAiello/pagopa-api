@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             xmlns:common="http://pagopa-api.pagopa.gov.it/common/xsd/common.xsd"
-            xmlns:tns="http://pagopa-api.pagopa.gov.it/general/xsd/InformativaContoAccredito.xsd"
-            targetNamespace="http://pagopa-api.pagopa.gov.it/general/xsd/InformativaContoAccredito.xsd">
+            xmlns:tns="http://pagopa-api.pagopa.gov.it/general/xsd/informativaContoAccredito.xsd"
+            targetNamespace="http://pagopa-api.pagopa.gov.it/general/xsd/informativaContoAccredito.xsd">
 
 
     <xsd:import schemaLocation="../../common/xsd/common.xsd" namespace="http://pagopa-api.pagopa.gov.it/common/xsd/common.xsd"/>
@@ -11,28 +11,12 @@
         <xsd:documentation>Informativa Conto Accredito</xsd:documentation>
     </xsd:annotation>
 
-    <xsd:element name="informativaContoAccredito " type="tns:ctInformativaContoAccredito"/>
-
-
-    <xsd:simpleType name="stSellerBankIdentifier">
-        <xsd:restriction base="xsd:string">
-            <xsd:minLength value="1"/>
-            <xsd:maxLength value="50"/>
-        </xsd:restriction>
-    </xsd:simpleType>
-
-
-    <xsd:simpleType name="stCF">
-        <xsd:restriction base="xsd:string">
-            <xsd:length value="11"/>
-            <xsd:pattern value="[0-9]{11}"/>
-        </xsd:restriction>
-    </xsd:simpleType>
+    <xsd:element name="informativaContoAccredito" type="tns:ctInformativaContoAccredito"/>
 
     <xsd:complexType name="ctInformativaContoAccredito">
         <xsd:sequence>
             <xsd:element type="common:stText35" name="identificativoFlusso"/>
-            <xsd:element type="tns:stCF" name="identificativoDominio"/>
+            <xsd:element type="common:stCF" name="identificativoDominio"/>
             <xsd:element type="common:stText70" name="ragioneSociale"/>
             <xsd:element type="xsd:dateTime" name="dataPubblicazione"/>
             <xsd:element type="xsd:dateTime" name="dataInizioValidita"/>
@@ -43,7 +27,7 @@
     <xsd:complexType name="ctInfoContoDiAccreditoPair">
         <xsd:sequence>
             <xsd:element type="common:stIBANIdentifier" name="ibanAccredito"/>
-            <xsd:element type="tns:stSellerBankIdentifier" name="idBancaSeller"/>
+            <xsd:element type="common:stSellerBankIdentifier" name="idBancaSeller"/>
         </xsd:sequence>
     </xsd:complexType>
 

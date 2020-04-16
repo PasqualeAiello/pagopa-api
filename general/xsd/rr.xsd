@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:common="http://pagopa-api.pagopa.gov.it/common/xsd/common.xsd"
+            xmlns:tns="http://pagopa-api.pagopa.gov.it/general/xsd/rr.xsd"
+            targetNamespace="http://pagopa-api.pagopa.gov.it/general/xsd/rr.xsd">
+
+    <xsd:import schemaLocation="../../common/xsd/common.xsd" namespace="http://pagopa-api.pagopa.gov.it/common/xsd/common.xsd"/>
+
+    <xsd:complexType name="ctRichiestaRevoca">
+        <xsd:sequence>
+            <xsd:element name="versioneOggetto" type="common:stText16">
+                <xsd:annotation>
+                    <xsd:documentation>Riporta la stessa informazione presente nel dato "versioneOggetto" della Ricevuta
+                        Telematica (RT).
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="dominio" type="common:ctDominio">
+                <xsd:annotation>
+                    <xsd:documentation>Riporta le stesse informazioni presenti nel blocco "Dominio" della Ricevuta
+                        Telematica (RT).
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="identificativoMessaggioRevoca" type="common:stText35">
+                <xsd:annotation>
+                    <xsd:documentation>Identificativo legato alla trasmissione della Richiesta di Revoca.
+                    </xsd:documentation>
+                    <xsd:documentation>Deve essere univoco nell’ambito della stessa data riferita all’elemento
+                        dataMessaggioRevoca.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="dataOraMessaggioRevoca" type="common:stISODateTime">
+                <xsd:annotation>
+                    <xsd:documentation>Indica la data e ora del messaggio di Revoca, secondo il formato ISO 8601
+                    </xsd:documentation>
+                    <xsd:documentation>[YYYY]-[MM]-[DD]T[hh]:[mm]:[ss]</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="istitutoAttestante" type="common:ctIstitutoAttestante">
+                <xsd:annotation>
+                    <xsd:documentation>Aggregazione relativa al PSP che ha emesso la RT oggetto di revoca. Riporta le
+                        stesse informazioni presenti nel blocco "soggettoAttestante" della Ricevuta Telematica (RT) cui
+                        si riferisce il messaggio di Richiesta di Revoca.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="soggettoVersante" type="common:ctSoggettoVersante" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Riporta le stesse informazioni presenti nel blocco "soggettoVersante" della
+                        Ricevuta Telematica (RT) cui si riferisce il messaggio di Richiesta di Revoca.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="soggettoPagatore" type="common:ctSoggettoPagatore">
+                <xsd:annotation>
+                    <xsd:documentation>Riporta le stesse informazioni presenti nel blocco "soggettoPagatore" della
+                        Ricevuta Telematica (RT) cui si riferisce il messaggio di Richiesta di Revoca.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="datiRevoca" type="common:ctDatiRevoca">
+                <xsd:annotation>
+                    <xsd:documentation>Aggregazione "dati della richiesta di revoca".</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="RR" type="tns:ctRichiestaRevoca">
+        <xsd:annotation>
+            <xsd:documentation>Richiesta Revoca (RR)</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+</xsd:schema>
+
