@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="paPerNodoPagamentoPsp"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata"
+                  xmlns:papnpp="http://pagopa-api.pagopa.gov.it/ec/xsd/paPerNodoPagamentoPsp.xsd"
+                  xmlns:tns="http://pagopa-api.pagopa.gov.it/ec/paPerNodoPagamentoPsp.wsdl"
+                  targetNamespace="http://pagopa-api.pagopa.gov.it/ec/paPerNodoPagamentoPsp.wsdl">
+
+    <wsdl:types>
+        <xsd:schema>
+            <xsd:import schemaLocation="xsd/paPerNodoPagamentoPsp.xsd" namespace="http://pagopa-api.pagopa.gov.it/ec/xsd/paPerNodoPagamentoPsp.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    
+    <wsdl:message name="paaVerificaRPT">
+        <wsdl:part name="bodyrichiesta" element="papnpp:paaVerificaRPT"/>
+        <wsdl:part name="header" element="papnpp:paaPerNodoPagamentoPspHeader"/>
+    </wsdl:message>
+    <wsdl:message name="paaVerificaRPTRisposta">
+        <wsdl:part name="bodyrisposta" element="papnpp:paaVerificaRPTRisposta"/>
+    </wsdl:message>
+    <wsdl:message name="paaAttivaRPT">
+        <wsdl:part name="bodyrichiesta" element="papnpp:paaAttivaRPT"/>
+        <wsdl:part name="header" element="papnpp:paaPerNodoPagamentoPspHeader"/>
+    </wsdl:message>
+    <wsdl:message name="paaAttivaRPTRisposta">
+        <wsdl:part name="bodyrisposta" element="papnpp:paaAttivaRPTRisposta"/>
+    </wsdl:message>
+
+    <wsdl:portType name="paPerNodoPagamentoPsp_PortType">
+        <wsdl:operation name="paaVerificaRPT">
+            <wsdl:input message="tns:paaVerificaRPT" wsam:Action="http://pagopa-api.pagopa.gov.it/service/ec/paPerNodoPagamentoPsp/paaVerificaRPT"/>
+            <wsdl:output message="tns:paaVerificaRPTRisposta" wsam:Action="http://pagopa-api.pagopa.gov.it/service/ec/paPerNodoPagamentoPsp/paaVerificaRPTRisposta"/>
+        </wsdl:operation>
+        <wsdl:operation name="paaAttivaRPT">
+            <wsdl:input message="tns:paaAttivaRPT" wsam:Action="http://pagopa-api.pagopa.gov.it/service/ec/paPerNodoPagamentoPsp/paaAttivaRPT"/>
+            <wsdl:output message="tns:paaAttivaRPTRisposta" wsam:Action="http://pagopa-api.pagopa.gov.it/service/ec/paPerNodoPagamentoPsp/paaAttivaRPTRisposta"/>
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <wsdl:binding name="paPerNodoPagamentoPsp_Binding" type="tns:paPerNodoPagamentoPsp_PortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="paaAttivaRPT">
+            <soap:operation soapAction="paaAttivaRPT"/>
+            <wsdl:input>
+                <soap:body parts="bodyrichiesta" use="literal"/>
+                <soap:header part="header" use="literal"  message="tns:paaAttivaRPT"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="paaVerificaRPT">
+            <soap:operation soapAction="paaVerificaRPT"/>
+            <wsdl:input>
+                <soap:body parts="bodyrichiesta" use="literal"/>
+                <soap:header part="header" use="literal" message="tns:paaVerificaRPT"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <wsdl:service name="paPerNodoPagamentoPsp_Service">
+        <wsdl:port name="paPerNodoPagamentoPsp_Port" binding="tns:paPerNodoPagamentoPsp_Binding">
+            <soap:address location="http://pagopa-api.pagopa.gov.it/service/ec/paPerNodoPagamentoPsp"/>
+        </wsdl:port>
+    </wsdl:service>
+
+</wsdl:definitions>

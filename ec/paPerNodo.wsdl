@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="paPerNodo"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata"
+                  xmlns:papn="http://pagopa-api.pagopa.gov.it/ec/xsd/paPerNodo.xsd"
+                  xmlns:tns="http://pagopa-api.pagopa.gov.it/ec/paPerNodo.wsdl"
+                  targetNamespace="http://pagopa-api.pagopa.gov.it/ec/paPerNodo.wsdl">
+
+    <wsdl:types>
+        <xsd:schema>
+            <xsd:import schemaLocation="xsd/paPerNodo.xsd" namespace="http://pagopa-api.pagopa.gov.it/ec/xsd/paPerNodo.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    
+    <wsdl:message name="paaInviaRT">
+        <wsdl:part name="bodyrichiesta" element="papn:paaInviaRT"/>
+        <wsdl:part name="header" element="papn:paaPerNodoHeader"/>
+    </wsdl:message>
+    <wsdl:message name="paaInviaRTResponse">
+        <wsdl:part name="bodyrisposta" element="papn:paaInviaRTRisposta"/>
+    </wsdl:message>
+    <wsdl:message name="paaInviaEsitoStorno">
+        <wsdl:part name="bodyrichiesta" element="papn:paaInviaEsitoStorno"/>
+    </wsdl:message>
+    <wsdl:message name="paaInviaEsitoStornoResponse">
+        <wsdl:part name="bodyrisposta" element="papn:paaInviaEsitoStornoRisposta"/>
+    </wsdl:message>
+    <wsdl:message name="paaInviaRichiestaRevoca">
+        <wsdl:part name="bodyrichiesta" element="papn:paaInviaRichiestaRevoca"/>
+    </wsdl:message>
+    <wsdl:message name="paaInviaRichiestaRevocaResponse">
+        <wsdl:part name="bodyrisposta" element="papn:paaInviaRichiestaRevocaRisposta"/>
+    </wsdl:message>
+
+    <wsdl:portType name="paPerNodo_PortType">
+        <wsdl:operation name="paaInviaRT">
+            <wsdl:input message="tns:paaInviaRT" wsam:Action="http://pagopa-api.pagopa.gov.it/service/ec/paPerNodo/paaInviaRT"/>
+            <wsdl:output message="tns:paaInviaRTResponse" wsam:Action="http://pagopa-api.pagopa.gov.it/service/ec/paPerNodo/paaInviaRTResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="paaInviaEsitoStorno">
+            <wsdl:input message="tns:paaInviaEsitoStorno" wsam:Action="http://pagopa-api.pagopa.gov.it/service/ec/paPerNodo/paaInviaEsitoStorno"/>
+            <wsdl:output message="tns:paaInviaEsitoStornoResponse" wsam:Action="http://pagopa-api.pagopa.gov.it/service/ec/paPerNodo/paaInviaEsitoStornoResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="paaInviaRichiestaRevoca">
+            <wsdl:input message="tns:paaInviaRichiestaRevoca" wsam:Action="http://pagopa-api.pagopa.gov.it/service/ec/paPerNodo/paaInviaRichiestaRevoca"/>
+            <wsdl:output message="tns:paaInviaRichiestaRevocaResponse" wsam:Action="http://pagopa-api.pagopa.gov.it/service/ec/paPerNodo/paaInviaRichiestaRevocaResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <wsdl:binding name="paPerNodo_Binding" type="tns:paPerNodo_PortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="paaInviaRT">
+            <soap:operation soapAction="paaInviaRT"/>
+            <wsdl:input>
+                <soap:body parts="bodyrichiesta" use="literal"/>
+                <soap:header part="header"  use="literal" message="tns:paaInviaRT"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="paaInviaEsitoStorno">
+            <soap:operation soapAction="paaInviaEsitoStorno"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="paaInviaRichiestaRevoca">
+            <soap:operation soapAction="paaInviaRichiestaRevoca"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <wsdl:service name="paPerNodo_Service">
+        <wsdl:port name="paPerNodo_Port" binding="tns:paPerNodo_Binding">
+            <soap:address location="http://pagopa-api.pagopa.gov.it/service/ec/paPerNodo"/>
+        </wsdl:port>
+    </wsdl:service>
+
+</wsdl:definitions>
