@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:common="http://pagopa-api.pagopa.gov.it/common/xsd/common.xsd"
+            xmlns:tns="http://pagopa-api.pagopa.gov.it/general/xsd/er.xsd"
+            targetNamespace="http://pagopa-api.pagopa.gov.it/general/xsd/er.xsd">
+
+    <xsd:import schemaLocation="../../common/xsd/common.xsd" namespace="http://pagopa-api.pagopa.gov.it/common/xsd/common.xsd"/>
+
+    <xsd:complexType name="ctEsitoRevoca">
+        <xsd:sequence>
+            <xsd:element name="versioneOggetto" type="common:stText16">
+                <xsd:annotation>
+                    <xsd:documentation>Riporta la stessa informazione presente nel dato "versioneOggetto" della
+                        Richiesta di Revoca (RR).
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="dominio" type="common:ctDominio">
+                <xsd:annotation>
+                    <xsd:documentation>Riporta le stesse informazioni presenti nel blocco "Dominio" della Richiesta di
+                        Revoca (RR).
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="identificativoMessaggioEsito" type="common:stText35">
+                <xsd:annotation>
+                    <xsd:documentation>Identificativo legato alla trasmissione del messaggio Esito Revoca.
+                    </xsd:documentation>
+                    <xsd:documentation>Deve essere univoco nell’ambito della stessa data riferita all’elemento
+                        dataMessaggioRevoca.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="dataOraMessaggioEsito" type="common:stISODateTime">
+                <xsd:annotation>
+                    <xsd:documentation>Indica la data e ora del messaggio di Esito Revoca, secondo il formato ISO 8601
+                    </xsd:documentation>
+                    <xsd:documentation>[YYYY]-[MM]-[DD]T[hh]:[mm]:[ss]</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="riferimentoMessaggioRevoca" type="common:stText35">
+                <xsd:annotation>
+                    <xsd:documentation>Con riferimento al messaggio di Esito Revoca (ER) l’elemento contiene il dato
+                        identificativoMessaggioRevoca legato alla trasmissione della Richiesta di Revoca (RR).
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="riferimentoDataRevoca" type="common:stISODate">
+                <xsd:annotation>
+                    <xsd:documentation>Indica la data secondo il formato ISO 8601 [YYYY]-[MM]-[DD] cui si riferisce la
+                        generazione del dato riferimentoMessaggioRevoca.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="istitutoAttestante" type="common:ctIstitutoAttestante">
+                <xsd:annotation>
+                    <xsd:documentation>Riporta le stesse informazioni presenti nel blocco "istitutoAttestante" della
+                        Richiesta di Revoca (RR) cui si riferisce il messaggio di Esito Revoca.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="soggettoVersante" type="common:ctSoggettoVersante" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Riporta le stesse informazioni presenti nel blocco "soggettoVersante" del
+                        messaggio Richiesta di Revoca (RR) cui si riferisce il messaggio di Esito Revoca.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="soggettoPagatore" type="common:ctSoggettoPagatore">
+                <xsd:annotation>
+                    <xsd:documentation>Riporta le stesse informazioni presenti nel blocco "soggettoPagatore" del
+                        messaggio Richiesta di Revoca (RR) cui si riferisce il messaggio di Esito Revoca.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="datiRevoca" type="common:ctDatiEsitoRevoca">
+                <xsd:annotation>
+                    <xsd:documentation>Aggregazione "dati del versamento"</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="ER" type="tns:ctEsitoRevoca">
+        <xsd:annotation>
+            <xsd:documentation>Esito Revoca (ER)</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+</xsd:schema>
+

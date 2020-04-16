@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:common="http://pagopa-api.pagopa.gov.it/common/xsd/common.xsd"
+            xmlns:tns="http://pagopa-api.pagopa.gov.it/cd/xsd/cdPerNodo.xsd"
+            targetNamespace="http://pagopa-api.pagopa.gov.it/cd/xsd/cdPerNodo.xsd">
+
+    <xsd:import schemaLocation="../../common/xsd/common.xsd" namespace="http://pagopa-api.pagopa.gov.it/common/xsd/common.xsd"/>
+
+    <xsd:element name="cdInfoWisp" type="tns:ctCdInfoWisp"/>
+    <xsd:element name="cdInfoWispResponse" type="tns:ctCdInfoWispResponse"/>
+
+    <xsd:complexType name="ctCdInfoWisp">
+        <xsd:sequence>
+            <xsd:element name="identificativoDominio" type="common:stText35"/>
+            <xsd:element name="identificativoUnivocoVersamento" type="common:stText35"/>
+            <xsd:element name="codiceContestoPagamento" type="common:stText35"/>
+            <xsd:element name="idPagamento" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="ctCdInfoWispResponse">
+        <xsd:complexContent>
+            <xsd:extension base="common:ctRisposta">
+                <xsd:sequence>
+                    <xsd:element name="esito" type="xsd:string" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+</xsd:schema>

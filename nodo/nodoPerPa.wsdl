@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="nodoPerPa"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata"
+                  xmlns:npp="http://pagopa-api.pagopa.gov.it/nodo/xsd/nodoPerPa.xsd"
+                  xmlns:tns="http://pagopa-api.pagopa.gov.it/nodo/nodoPerPa.wsdl"
+                  targetNamespace="http://pagopa-api.pagopa.gov.it/nodo/nodoPerPa.wsdl">
+
+    <wsdl:types>
+        <xsd:schema>
+            <xsd:import schemaLocation="xsd/nodoPerPa.xsd" namespace="http://pagopa-api.pagopa.gov.it/nodo/xsd/nodoPerPa.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    
+    <wsdl:message name="nodoChiediStatoRPT">
+        <wsdl:part name="bodyrichiesta" element="npp:nodoChiediStatoRPT">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="nodoChiediStatoRPTResponse">
+        <wsdl:part name="bodyrisposta" element="npp:nodoChiediStatoRPTRisposta">
+        </wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="nodoChiediCopiaRT">
+        <wsdl:part name="bodyrichiesta" element="npp:nodoChiediCopiaRT">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="nodoChiediCopiaRTResponse">
+        <wsdl:part name="bodyrisposta" element="npp:nodoChiediCopiaRTRisposta">
+        </wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="nodoInviaRPT">
+        <wsdl:part name="bodyrichiesta" element="npp:nodoInviaRPT">
+        </wsdl:part>
+        <wsdl:part name="header" element="npp:nodoPerPaHeader">
+        </wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="nodoInviaRPTResponse">
+        <wsdl:part name="bodyrisposta" element="npp:nodoInviaRPTRisposta">
+        </wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="nodoInviaCarrelloRPT">
+        <wsdl:part name="bodyrichiesta" element="npp:nodoInviaCarrelloRPT">
+        </wsdl:part>
+        <wsdl:part name="header" element="npp:nodoPerPaCarrelloHeader">
+        </wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="nodoInviaCarrelloRPTResponse">
+        <wsdl:part name="bodyrisposta" element="npp:nodoInviaCarrelloRPTRisposta">
+        </wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="nodoChiediListaPendentiRPT">
+        <wsdl:part name="bodyrichiesta" element="npp:nodoChiediListaPendentiRPT">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="nodoChiediListaPendentiRPTResponse">
+        <wsdl:part name="bodyrisposta" element="npp:nodoChiediListaPendentiRPTRisposta">
+        </wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="nodoChiediInformativaPSP">
+        <wsdl:part name="bodyrichiesta" element="npp:nodoChiediInformativaPSP"/>
+    </wsdl:message>
+
+    <wsdl:message name="nodoChiediInformativaPSPResponse">
+        <wsdl:part name="bodyrisposta" element="npp:nodoChiediInformativaPSPRisposta"/>
+    </wsdl:message>
+
+    <wsdl:message name="nodoPAChiediInformativaPA">
+        <wsdl:part name="bodyrichiesta" element="npp:nodoPAChiediInformativaPA">
+        </wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="nodoPAChiediInformativaPAResponse">
+        <wsdl:part name="bodyrisposta" element="npp:nodoPAChiediInformativaPARisposta">
+        </wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="nodoChiediElencoQuadraturePA">
+        <wsdl:part name="bodyrichiesta" element="npp:nodoChiediElencoQuadraturePA"/>
+    </wsdl:message>
+    <wsdl:message name="nodoChiediElencoQuadraturePAResponse">
+        <wsdl:part name="bodyrisposta" element="npp:nodoChiediElencoQuadraturePARisposta"/>
+    </wsdl:message>
+
+    <wsdl:message name="nodoChiediQuadraturaPA">
+        <wsdl:part name="parameters" element="npp:nodoChiediQuadraturaPA"/>
+    </wsdl:message>
+    <wsdl:message name="nodoChiediQuadraturaPAResponse">
+        <wsdl:part name="parameters" element="npp:nodoChiediQuadraturaPARisposta"/>
+    </wsdl:message>
+
+    <wsdl:message name="nodoChiediElencoFlussiRendicontazione">
+        <wsdl:part name="parameters" element="npp:nodoChiediElencoFlussiRendicontazione"/>
+    </wsdl:message>
+    <wsdl:message name="nodoChiediElencoFlussiRendicontazioneResponse">
+        <wsdl:part name="parameters" element="npp:nodoChiediElencoFlussiRendicontazioneRisposta"/>
+    </wsdl:message>
+
+    <wsdl:message name="nodoChiediFlussoRendicontazione">
+        <wsdl:part name="parameters" element="npp:nodoChiediFlussoRendicontazione"/>
+    </wsdl:message>
+    <wsdl:message name="nodoChiediFlussoRendicontazioneResponse">
+        <wsdl:part name="parameters" element="npp:nodoChiediFlussoRendicontazioneRisposta"/>
+    </wsdl:message>
+
+    <wsdl:message name="nodoInviaRichiestaStorno">
+        <wsdl:part name="parameters" element="npp:nodoInviaRichiestaStorno"/>
+    </wsdl:message>
+    <wsdl:message name="nodoInviaRichiestaStornoResponse">
+        <wsdl:part name="parameters" element="npp:nodoInviaRichiestaStornoRisposta"/>
+    </wsdl:message>
+
+    <wsdl:message name="nodoInviaRispostaRevoca">
+        <wsdl:part name="parameters" element="npp:nodoInviaRispostaRevoca"/>
+    </wsdl:message>
+    <wsdl:message name="nodoInviaRispostaRevocaResponse">
+        <wsdl:part name="parameters" element="npp:nodoInviaRispostaRevocaRisposta"/>
+    </wsdl:message>
+
+
+    <wsdl:message name="nodoChiediSceltaWISP">
+        <wsdl:part name="bodyrichiesta" element="npp:nodoChiediSceltaWISP">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="nodoChiediSceltaWISPResponse">
+        <wsdl:part name="bodyrisposta" element="npp:nodoChiediSceltaWISPRisposta">
+        </wsdl:part>
+    </wsdl:message>
+
+    <wsdl:portType name="nodoPerPa_PortType">
+        <wsdl:operation name="nodoChiediStatoRPT">
+            <wsdl:input name="nodoChiediStatoRPT" message="tns:nodoChiediStatoRPT" wsam:Action="http://pagopa-api.pagopa.gov.it/service/nodo/nodoPerPa/nodoChiediStatoRPT"/>
+            <wsdl:output name="nodoChiediStatoRPTResponse" message="tns:nodoChiediStatoRPTResponse" wsam:Action="http://pagopa-api.pagopa.gov.it/service/nodo/nodoPerPa/nodoChiediStatoRPTResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="nodoChiediListaPendentiRPT">
+            <wsdl:input name="nodoChiediListaPendentiRPT" message="tns:nodoChiediListaPendentiRPT" wsam:Action="http://pagopa-api.pagopa.gov.it/service/nodo/nodoPerPa/nodoChiediListaPendentiRPT"/>
+            <wsdl:output name="nodoChiediListaPendentiRPTResponse" message="tns:nodoChiediListaPendentiRPTResponse" wsam:Action="http://pagopa-api.pagopa.gov.it/service/nodo/nodoPerPa/nodoChiediListaPendentiRPTResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="nodoInviaRPT">
+            <wsdl:input name="nodoInviaRPT" message="tns:nodoInviaRPT" wsam:Action="http://pagopa-api.pagopa.gov.it/service/nodo/nodoPerPa/nodoInviaRPT"/>
+            <wsdl:output name="nodoInviaRPTResponse" message="tns:nodoInviaRPTResponse" wsam:Action="http://pagopa-api.pagopa.gov.it/service/nodo/nodoPerPa/nodoInviaRPTResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="nodoInviaCarrelloRPT">
+            <wsdl:input name="nodoInviaCarrelloRPT" message="tns:nodoInviaCarrelloRPT" wsam:Action="http://pagopa-api.pagopa.gov.it/service/nodo/nodoPerPa/nodoInviaCarrelloRPT"/>
+            <wsdl:output name="nodoInviaCarrelloRPTResponse" message="tns:nodoInviaCarrelloRPTResponse" wsam:Action="http://pagopa-api.pagopa.gov.it/service/nodo/nodoPerPa/nodoInviaCarrelloRPTResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="nodoChiediCopiaRT">
+            <wsdl:input name="nodoChiediCopiaRT" message="tns:nodoChiediCopiaRT" wsam:Action="http://pagopa-api.pagopa.gov.it/service/nodo/nodoPerPa/nodoChiediCopiaRT"/>
+            <wsdl:output name="nodoChiediCopiaRTResponse" message="tns:nodoChiediCopiaRTResponse" wsam:Action="http://pagopa-api.pagopa.gov.it/service/nodo/nodoPerPa/nodoChiediCopiaRTResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="nodoChiediInformativaPSP">
+            <wsdl:input name="nodoChiediInformativaPSP" message="tns:nodoChiediInformativaPSP" wsam:Action="http://pagopa-api.pagopa.gov.it/service/nodo/nodoPerPa/nodoChiediInformativaPSP"/>
+            <wsdl:output name="nodoChiediInformativaPSPResponse" message="tns:nodoChiediInformativaPSPResponse" wsam:Action="http://pagopa-api.pagopa.gov.it/service/nodo/nodoPerPa/nodoChiediInformativaPSPResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="nodoPAChiediInformativaPA">
+            <wsdl:input name="nodoPAChiediInformativaPA" message="tns:nodoPAChiediInformativaPA" wsam:Action="http://pagopa-api.pagopa.gov.it/service/nodo/nodoPerPa/nodoPAChiediInformativaPA"/>
+            <wsdl:output name="nodoPAChiediInformativaPAResponse" message="tns:nodoPAChiediInformativaPAResponse" wsam:Action="http://pagopa-api.pagopa.gov.it/service/nodo/nodoPerPa/nodoPAChiediInformativaPAResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="nodoChiediElencoQuadraturePA">
+            <wsdl:input name="nodoChiediElencoQuadraturePA" message="tns:nodoChiediElencoQuadraturePA" wsam:Action="http://pagopa-api.pagopa.gov.it/service/nodo/nodoPerPa/nodoChiediElencoQuadraturePA"/>
+            <wsdl:output name="nodoChiediElencoQuadraturePAResponse" message="tns:nodoChiediElencoQuadraturePAResponse" wsam:Action="http://pagopa-api.pagopa.gov.it/service/nodo/nodoPerPa/nodoChiediElencoQuadraturePAResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="nodoChiediQuadraturaPA">
+            <wsdl:input name="nodoChiediQuadraturaPA" message="tns:nodoChiediQuadraturaPA" wsam:Action="http://pagopa-api.pagopa.gov.it/service/nodo/nodoPerPa/nodoChiediQuadraturaPA"/>
+            <wsdl:output name="nodoChiediQuadraturaPAResponse" message="tns:nodoChiediQuadraturaPAResponse" wsam:Action="http://pagopa-api.pagopa.gov.it/service/nodo/nodoPerPa/nodoChiediQuadraturaPAResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="nodoChiediElencoFlussiRendicontazione">
+            <wsdl:input name="nodoChiediElencoFlussiRendicontazione" message="tns:nodoChiediElencoFlussiRendicontazione" wsam:Action="http://pagopa-api.pagopa.gov.it/service/nodo/nodoPerPa/nodoChiediElencoFlussiRendicontazione"/>
+            <wsdl:output name="nodoChiediElencoFlussiRendicontazioneResponse" message="tns:nodoChiediElencoFlussiRendicontazioneResponse" wsam:Action="http://pagopa-api.pagopa.gov.it/service/nodo/nodoPerPa/nodoChiediElencoFlussiRendicontazioneResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="nodoChiediFlussoRendicontazione">
+            <wsdl:input name="nodoChiediFlussoRendicontazione" message="tns:nodoChiediFlussoRendicontazione" wsam:Action="http://pagopa-api.pagopa.gov.it/service/nodo/nodoPerPa/nodoChiediFlussoRendicontazione"/>
+            <wsdl:output name="nodoChiediFlussoRendicontazioneResponse" message="tns:nodoChiediFlussoRendicontazioneResponse" wsam:Action="http://pagopa-api.pagopa.gov.it/service/nodo/nodoPerPa/nodoChiediFlussoRendicontazioneResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="nodoInviaRichiestaStorno">
+            <wsdl:input name="nodoInviaRichiestaStorno" message="tns:nodoInviaRichiestaStorno" wsam:Action="http://pagopa-api.pagopa.gov.it/service/nodo/nodoPerPa/nodoInviaRichiestaStorno"/>
+            <wsdl:output name="nodoInviaRichiestaStornoResponse" message="tns:nodoInviaRichiestaStornoResponse" wsam:Action="http://pagopa-api.pagopa.gov.it/service/nodo/nodoPerPa/nodoInviaRichiestaStornoResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="nodoInviaRispostaRevoca">
+            <wsdl:input name="nodoInviaRispostaRevoca" message="tns:nodoInviaRispostaRevoca" wsam:Action="http://pagopa-api.pagopa.gov.it/service/nodo/nodoPerPa/nodoInviaRispostaRevoca"/>
+            <wsdl:output name="nodoInviaRispostaRevocaResponse" message="tns:nodoInviaRispostaRevocaResponse" wsam:Action="http://pagopa-api.pagopa.gov.it/service/nodo/nodoPerPa/nodoInviaRispostaRevocaResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="nodoChiediSceltaWISP">
+            <wsdl:input name="nodoChiediSceltaWISP" message="tns:nodoChiediSceltaWISP" wsam:Action="http://pagopa-api.pagopa.gov.it/service/nodo/nodoPerPa/nodoChiediSceltaWISP"/>
+            <wsdl:output name="nodoChiediSceltaWISPResponse" message="tns:nodoChiediSceltaWISPResponse" wsam:Action="http://pagopa-api.pagopa.gov.it/service/nodo/nodoPerPa/nodoChiediSceltaWISPResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <wsdl:binding name="nodoPerPa_Binding" type="tns:nodoPerPa_PortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="nodoChiediStatoRPT">
+            <soap:operation soapAction="nodoChiediStatoRPT" style="document"/>
+            <wsdl:input name="nodoChiediStatoRPT">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="nodoChiediStatoRPTResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="nodoChiediListaPendentiRPT">
+            <soap:operation soapAction="nodoChiediListaPendentiRPT" style="document"/>
+            <wsdl:input name="nodoChiediListaPendentiRPT">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="nodoChiediListaPendentiRPTResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="nodoInviaRPT">
+            <soap:operation soapAction="nodoInviaRPT" style="document"/>
+            <wsdl:input name="nodoInviaRPT">
+                <soap:header message="tns:nodoInviaRPT" part="header" use="literal">
+                </soap:header>
+                <soap:body parts="bodyrichiesta" use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="nodoInviaRPTResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="nodoInviaCarrelloRPT">
+            <soap:operation soapAction="nodoInviaCarrelloRPT" style="document"/>
+            <wsdl:input name="nodoInviaCarrelloRPT">
+                <soap:header message="tns:nodoInviaCarrelloRPT" part="header" use="literal">
+                </soap:header>
+                <soap:body parts="bodyrichiesta" use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="nodoInviaCarrelloRPTResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="nodoChiediCopiaRT">
+            <soap:operation soapAction="nodoChiediCopiaRT" style="document"/>
+            <wsdl:input name="nodoChiediCopiaRT">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="nodoChiediCopiaRTResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="nodoChiediInformativaPSP">
+            <soap:operation soapAction="nodoChiediInformativaPSP" style="document"/>
+            <wsdl:input name="nodoChiediInformativaPSP">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="nodoChiediInformativaPSPResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="nodoPAChiediInformativaPA">
+            <soap:operation soapAction="nodoPAChiediInformativaPA" style="document"/>
+            <wsdl:input name="nodoPAChiediInformativaPA">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="nodoPAChiediInformativaPAResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="nodoChiediElencoQuadraturePA">
+            <soap:operation soapAction="nodoChiediElencoQuadraturePA" style="document"/>
+            <wsdl:input name="nodoChiediElencoQuadraturePA">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="nodoChiediElencoQuadraturePAResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="nodoChiediQuadraturaPA">
+            <soap:operation soapAction="nodoChiediQuadraturaPA" style="document"/>
+            <wsdl:input name="nodoChiediQuadraturaPA">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="nodoChiediQuadraturaPAResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="nodoChiediElencoFlussiRendicontazione">
+            <soap:operation soapAction="nodoChiediElencoFlussiRendicontazione" style="document"/>
+            <wsdl:input name="nodoChiediElencoFlussiRendicontazione">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="nodoChiediElencoFlussiRendicontazioneResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="nodoChiediFlussoRendicontazione">
+            <soap:operation soapAction="nodoChiediFlussoRendicontazione" style="document"/>
+            <wsdl:input name="nodoChiediFlussoRendicontazione">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="nodoChiediFlussoRendicontazioneResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="nodoInviaRichiestaStorno">
+            <soap:operation soapAction="nodoInviaRichiestaStorno" style="document"/>
+            <wsdl:input name="nodoInviaRichiestaStorno">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="nodoInviaRichiestaStornoResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="nodoInviaRispostaRevoca">
+            <soap:operation soapAction="nodoInviaRispostaRevoca" style="document"/>
+            <wsdl:input name="nodoInviaRispostaRevoca">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="nodoInviaRispostaRevocaResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="nodoChiediSceltaWISP">
+            <soap:operation soapAction="nodoChiediSceltaWISP" style="document"/>
+            <wsdl:input name="nodoChiediSceltaWISP">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="nodoChiediSceltaWISPResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <wsdl:service name="nodoPerPa_Service">
+        <wsdl:port name="nodoPerPa_Port" binding="tns:nodoPerPa_Binding">
+            <soap:address location="http://pagopa-api.pagopa.gov.it/service/nodo/nodoPerPa"/>
+        </wsdl:port>
+    </wsdl:service>
+
+</wsdl:definitions>

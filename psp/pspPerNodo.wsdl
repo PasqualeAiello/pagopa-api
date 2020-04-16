@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="pspPerNodo"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata"
+                  xmlns:ppn="http://pagopa-api.pagopa.gov.it/psp/xsd/pspPerNodo.xsd"
+                  xmlns:tns="http://pagopa-api.pagopa.gov.it/psp/pspPerNodo.wsdl"
+                  targetNamespace="http://pagopa-api.pagopa.gov.it/psp/pspPerNodo.wsdl">
+
+    <wsdl:types>
+        <xsd:schema>
+            <xsd:import schemaLocation="xsd/pspPerNodo.xsd" namespace="http://pagopa-api.pagopa.gov.it/psp/xsd/pspPerNodo.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+
+    <wsdl:message name="pspInviaRPT">
+        <wsdl:part name="bodyRequest" element="ppn:pspInviaRPT"/>
+    </wsdl:message>
+    <wsdl:message name="pspInviaRPTResponse">
+        <wsdl:part name="bodyResponse" element="ppn:pspInviaRPTResponse"/>
+    </wsdl:message>
+    <wsdl:message name="pspInviaCarrelloRPT">
+        <wsdl:part name="bodyRequest" element="ppn:pspInviaCarrelloRPT"/>
+    </wsdl:message>
+    <wsdl:message name="pspInviaCarrelloRPTCarte">
+        <wsdl:part name="bodyRequest" element="ppn:pspInviaCarrelloRPTCarte"/>
+    </wsdl:message>
+    <wsdl:message name="pspInviaCarrelloRPTResponse">
+        <wsdl:part name="bodyResponse" element="ppn:pspInviaCarrelloRPTResponse"/>
+    </wsdl:message>
+    <wsdl:message name="pspInviaCarrelloRPTCarteResponse">
+        <wsdl:part name="bodyResponse" element="ppn:pspInviaCarrelloRPTCarteResponse"/>
+    </wsdl:message>
+    <wsdl:message name="pspChiediRT">
+        <wsdl:part name="bodyRequest" element="ppn:pspChiediRT"/>
+    </wsdl:message>
+    <wsdl:message name="pspChiediRTResponse">
+        <wsdl:part name="bodyResponse" element="ppn:pspChiediRTResponse"/>
+    </wsdl:message>
+    <wsdl:message name="pspInviaAckRT">
+        <wsdl:part name="bodyRequest" element="ppn:pspInviaAckRT"/>
+    </wsdl:message>
+    <wsdl:message name="pspInviaAckRTResponse">
+        <wsdl:part name="bodyResponse" element="ppn:pspInviaAckRTResponse"/>
+    </wsdl:message>
+    <wsdl:message name="pspChiediAvanzamentoRPT">
+        <wsdl:part name="bodyRequest" element="ppn:pspChiediAvanzamentoRPT"/>
+    </wsdl:message>
+    <wsdl:message name="pspChiediAvanzamentoRPTResponse">
+        <wsdl:part name="bodyResponse" element="ppn:pspChiediAvanzamentoRPTResponse"/>
+    </wsdl:message>
+    <wsdl:message name="pspChiediListaRT">
+        <wsdl:part name="bodyRequest" element="ppn:pspChiediListaRT"/>
+    </wsdl:message>
+    <wsdl:message name="pspChiediListaRTResponse">
+        <wsdl:part name="bodyResponse" element="ppn:pspChiediListaRTResponse"/>
+    </wsdl:message>
+    <wsdl:message name="pspNotificaCancellazioneRPT">
+        <wsdl:part name="bodyRequest" element="ppn:pspNotificaCancellazioneRPT"/>
+    </wsdl:message>
+    <wsdl:message name="pspNotificaCancellazioneRPTResponse">
+        <wsdl:part name="bodyResponse" element="ppn:pspNotificaCancellazioneRPTResponse"/>
+    </wsdl:message>
+    <wsdl:message name="pspInviaRichiestaStorno">
+        <wsdl:part name="bodyRequest" element="ppn:pspInviaRichiestaStorno"/>
+    </wsdl:message>
+    <wsdl:message name="pspInviaRichiestaStornoResponse">
+        <wsdl:part name="bodyResponse" element="ppn:pspInviaRichiestaStornoResponse"/>
+    </wsdl:message>
+    <wsdl:message name="pspInviaRispostaRevoca">
+        <wsdl:part name="bodyRequest" element="ppn:pspInviaRispostaRevoca"/>
+    </wsdl:message>
+    <wsdl:message name="pspInviaRispostaRevocaResponse">
+        <wsdl:part name="bodyResponse" element="ppn:pspInviaRispostaRevocaResponse"/>
+    </wsdl:message>
+
+    <wsdl:portType name="pspPerNodo_PortType">
+        <wsdl:operation name="pspInviaRPT">
+            <wsdl:input message="tns:pspInviaRPT" wsam:Action="http://pagopa-api.pagopa.gov.it/service/psp/pspPerNodo/pspInviaRPT"/>
+            <wsdl:output message="tns:pspInviaRPTResponse" wsam:Action="http://pagopa-api.pagopa.gov.it/service/psp/pspPerNodo/pspInviaRPTResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="pspInviaCarrelloRPT">
+            <wsdl:input message="tns:pspInviaCarrelloRPT" wsam:Action="http://pagopa-api.pagopa.gov.it/service/psp/pspPerNodo/pspInviaCarrelloRPT"/>
+            <wsdl:output message="tns:pspInviaCarrelloRPTResponse" wsam:Action="http://pagopa-api.pagopa.gov.it/service/psp/pspPerNodo/pspInviaCarrelloRPTResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="pspInviaCarrelloRPTCarte">
+            <wsdl:input message="tns:pspInviaCarrelloRPTCarte" wsam:Action="http://pagopa-api.pagopa.gov.it/service/psp/pspPerNodo/pspInviaCarrelloRPTCarte"/>
+            <wsdl:output message="tns:pspInviaCarrelloRPTCarteResponse" wsam:Action="http://pagopa-api.pagopa.gov.it/service/psp/pspPerNodo/pspInviaCarrelloRPTCarteResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="pspChiediRT">
+            <wsdl:input message="tns:pspChiediRT" wsam:Action="http://pagopa-api.pagopa.gov.it/service/psp/pspPerNodo/pspChiediRT"/>
+            <wsdl:output message="tns:pspChiediRTResponse" wsam:Action="http://pagopa-api.pagopa.gov.it/service/psp/pspPerNodo/pspChiediRTResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="pspInviaAckRT">
+            <wsdl:input message="tns:pspInviaAckRT" wsam:Action="http://pagopa-api.pagopa.gov.it/service/psp/pspPerNodo/pspInviaAckRT"/>
+            <wsdl:output message="tns:pspInviaAckRTResponse" wsam:Action="http://pagopa-api.pagopa.gov.it/service/psp/pspPerNodo/pspInviaAckRTResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="pspChiediAvanzamentoRPT">
+            <wsdl:input message="tns:pspChiediAvanzamentoRPT" wsam:Action="http://pagopa-api.pagopa.gov.it/service/psp/pspPerNodo/pspChiediAvanzamentoRPT"/>
+            <wsdl:output message="tns:pspChiediAvanzamentoRPTResponse" wsam:Action="http://pagopa-api.pagopa.gov.it/service/psp/pspPerNodo/pspChiediAvanzamentoRPTResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="pspChiediListaRT">
+            <wsdl:input message="tns:pspChiediListaRT" wsam:Action="http://pagopa-api.pagopa.gov.it/service/psp/pspPerNodo/pspChiediListaRT"/>
+            <wsdl:output message="tns:pspChiediListaRTResponse" wsam:Action="http://pagopa-api.pagopa.gov.it/service/psp/pspPerNodo/pspChiediListaRTResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="pspNotificaCancellazioneRPT">
+            <wsdl:input message="tns:pspNotificaCancellazioneRPT" wsam:Action="http://pagopa-api.pagopa.gov.it/service/psp/pspPerNodo/pspNotificaCancellazioneRPT"/>
+            <wsdl:output message="tns:pspNotificaCancellazioneRPTResponse" wsam:Action="http://pagopa-api.pagopa.gov.it/service/psp/pspPerNodo/pspNotificaCancellazioneRPTResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="pspInviaRichiestaStorno">
+            <wsdl:input message="tns:pspInviaRichiestaStorno" wsam:Action="http://pagopa-api.pagopa.gov.it/service/psp/pspPerNodo/pspInviaRichiestaStorno"/>
+            <wsdl:output message="tns:pspInviaRichiestaStornoResponse" wsam:Action="http://pagopa-api.pagopa.gov.it/service/psp/pspPerNodo/pspInviaRichiestaStornoResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="pspInviaRispostaRevoca">
+            <wsdl:input message="tns:pspInviaRispostaRevoca" wsam:Action="http://pagopa-api.pagopa.gov.it/service/psp/pspPerNodo/pspInviaRispostaRevoca"/>
+            <wsdl:output message="tns:pspInviaRispostaRevocaResponse" wsam:Action="http://pagopa-api.pagopa.gov.it/service/psp/pspPerNodo/pspInviaRispostaRevocaResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <wsdl:binding name="pspPerNodo_Binding" type="tns:pspPerNodo_PortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="pspInviaRPT">
+            <soap:operation soapAction="pspInviaRPT"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="pspInviaCarrelloRPT">
+            <soap:operation soapAction="pspInviaCarrelloRPT"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="pspInviaCarrelloRPTCarte">
+            <soap:operation soapAction="pspInviaCarrelloRPTCarte"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="pspChiediRT">
+            <soap:operation soapAction="pspChiediRT"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="pspInviaAckRT">
+            <soap:operation soapAction="pspInviaAckRT"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="pspChiediAvanzamentoRPT">
+            <soap:operation soapAction="pspChiediAvanzamentoRPT"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="pspChiediListaRT">
+            <soap:operation soapAction="pspChiediListaRT"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="pspNotificaCancellazioneRPT">
+            <soap:operation soapAction="pspNotificaCancellazioneRPT"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="pspInviaRichiestaStorno">
+            <soap:operation soapAction="pspInviaRichiestaStorno"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="pspInviaRispostaRevoca">
+            <soap:operation soapAction="pspInviaRispostaRevoca"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="pspPerNodo_Service">
+        <wsdl:port name="pspPerNodo_Port" binding="tns:pspPerNodo_Binding">
+            <soap:address location="http://pagopa-api.pagopa.gov.it/service/psp/pspPerNodo"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

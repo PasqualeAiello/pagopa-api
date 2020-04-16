@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:common="http://pagopa-api.pagopa.gov.it/common/xsd/common.xsd"
+            xmlns:tns="http://pagopa-api.pagopa.gov.it/general/xsd/tabellaDelleControparti.xsd"
+            targetNamespace="http://pagopa-api.pagopa.gov.it/general/xsd/tabellaDelleControparti.xsd">
+
+    <xsd:annotation>
+        <xsd:documentation>Tabella delle controparti</xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:import schemaLocation="../../common/xsd/common.xsd" namespace="http://pagopa-api.pagopa.gov.it/common/xsd/common.xsd"/>
+
+    <xsd:element name="listaInformativeControparte" type="tns:ctListaInformativeControparte"/>
+    <xsd:element name="informativaControparte" type="tns:ctInformativaControparte"/>
+    
+    
+    <xsd:complexType name="ctListaInformativeControparte">
+        <xsd:sequence>
+            <xsd:element name="informativaControparte" type="tns:ctInformativaControparte" maxOccurs="unbounded"
+                        minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="ctInformativaControparte">
+        <xsd:sequence>
+            <xsd:element type="common:stText35" name="identificativoFlusso"/>
+            <xsd:element type="common:stText35" name="identificativoDominio"/>
+            <xsd:element type="common:stText70" name="ragioneSociale"/>
+            <xsd:element type="common:stDateTimeGiornoOra" name="dataPubblicazione"/>
+            <xsd:element type="common:stDateTimeGiornoOra" name="dataInizioValidita"/>
+            <xsd:element type="common:stPagamentiPressoPSP" name="pagamentiPressoPSP"/>
+            <xsd:element type="common:ctErogazioneServizio" name="erogazioneServizio"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+</xsd:schema>
