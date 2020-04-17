@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema xmlns:common="http://pagopa-api.pagopa.gov.it/common/xsd/common.xsd"
+<xsd:schema xelementFormDefault="qualified"
             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            mlns:common="http://pagopa-api.pagopa.gov.it/common/xsd/common.xsd"
             xmlns:tns="http://pagopa-api.pagopa.gov.it/general/xsd/quadraturePSP.xsd"
             targetNamespace="http://pagopa-api.pagopa.gov.it/general/xsd/quadraturePSP.xsd">
 
