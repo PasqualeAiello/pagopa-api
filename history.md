@@ -20,7 +20,16 @@ project planning is avaible as [github project](https://github.com/pagopa/pagopa
 
 6.3.1 - wsdl refactoring, fix issues related on data validation already defined in [documentation](https://docs.italia.it/italia/pagopa/pagopa-specifichepagamenti-docs/it/2.2.6/index.html).
 
-[6.3](https://github.com/pagopa/pagopa-api/milestone/2) - WISP landing page with custom images.
+
+
+## 6.3.1+20200430
+
+bug fixing
+
+## [6.3.0](https://github.com/pagopa/pagopa-api/milestone/2) - WISP landing page with custom images.
+
+- Wisp landing page with custom images
+- WISP language url 
 
 ## 6.2.0+20200415
 
